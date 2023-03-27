@@ -67,8 +67,11 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
     <body>
         ";
         // line 17
-        $this->displayBlock('body', $context, $blocks);
+        $this->loadTemplate("navigation.html.twig", "base.html.twig", 17)->display($context);
         // line 18
+        echo "        ";
+        $this->displayBlock('body', $context, $blocks);
+        // line 19
         echo "    </body>
 </html>
 ";
@@ -145,7 +148,7 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
 
     }
 
-    // line 17
+    // line 18
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -168,9 +171,14 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  149 => 17,  136 => 13,  126 => 12,  113 => 9,  103 => 8,  84 => 5,  72 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
+        return array (  152 => 18,  139 => 13,  129 => 12,  116 => 9,  106 => 8,  87 => 5,  75 => 19,  72 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -191,6 +199,7 @@ class __TwigTemplate_d37d1c3621cb1b31c9f974580366ac09 extends Template
         {% endblock %}
     </head>
     <body>
+        {% include 'navigation.html.twig' %}
         {% block body %}{% endblock %}
     </body>
 </html>

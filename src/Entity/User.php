@@ -21,7 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $name = null;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $surname = null;
+        private ?string $surname = null;
 
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
@@ -45,13 +45,44 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $CVName = null;
 
-    #[ORM\ManyToOne]
-    private ?Company $CompanyID = null;
-
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string|null $name
+     */
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    /**
+     * @param string|null $surname
+     */
+    public function setSurname(?string $surname): void
+    {
+        $this->surname = $surname;
+    }
+
+
 
     public function getEmail(): ?string
     {
@@ -154,15 +185,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCompanyID(): ?Company
-    {
-        return $this->CompanyID;
-    }
-
-    public function setCompanyID(?Company $CompanyID): self
-    {
-        $this->CompanyID = $CompanyID;
-
-        return $this;
-    }
 }
