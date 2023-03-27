@@ -1,0 +1,3 @@
+<?php //App%255CController%255CPermissionDeniedController
+
+return [PHP_INT_MAX, []];

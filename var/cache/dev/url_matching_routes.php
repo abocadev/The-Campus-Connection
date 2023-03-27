@@ -17,7 +17,12 @@ return [
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\Auth\\LoginController::index'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\Auth\\LoginController::logout'], null, null, null, false, false, null]],
         '/registration' => [[['_route' => 'app_registration', '_controller' => 'App\\Controller\\Auth\\RegistrationController::index'], null, null, null, false, false, null]],
+        '/company' => [[['_route' => 'app_company', '_controller' => 'App\\Controller\\Companies\\CompanyController::index'], null, null, null, false, false, null]],
+        '/company/create' => [[['_route' => 'app_companies_create_company', '_controller' => 'App\\Controller\\Companies\\CreateCompanyController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'homepage', '_controller' => 'App\\Controller\\HomePageController::index'], null, null, null, false, false, null]],
+        '/offers/create' => [[['_route' => 'app_offers_create_offers', '_controller' => 'App\\Controller\\Offers\\CreateOffersController::index'], null, null, null, false, false, null]],
+        '/offers' => [[['_route' => 'app_offers', '_controller' => 'App\\Controller\\Offers\\OffersController::index'], null, null, null, false, false, null]],
+        '/permission/denied' => [[['_route' => 'app_permission_denied', '_controller' => 'App\\Controller\\PermissionDeniedController::index'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -36,6 +41,7 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
+                .'|/offers/([^/]++)(*:185)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -45,8 +51,9 @@ return [
         116 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        159 => [
-            [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
+        159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        185 => [
+            [['_route' => 'app_individual_offer', '_controller' => 'App\\Controller\\Offers\\OffersController::offer'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

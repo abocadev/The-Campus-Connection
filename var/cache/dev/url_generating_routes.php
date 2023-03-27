@@ -19,5 +19,11 @@ return [
     'app_login' => [[], ['_controller' => 'App\\Controller\\Auth\\LoginController::index'], [], [['text', '/login']], [], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\Auth\\LoginController::logout'], [], [['text', '/logout']], [], [], []],
     'app_registration' => [[], ['_controller' => 'App\\Controller\\Auth\\RegistrationController::index'], [], [['text', '/registration']], [], [], []],
+    'app_company' => [[], ['_controller' => 'App\\Controller\\Companies\\CompanyController::index'], [], [['text', '/company']], [], [], []],
+    'app_companies_create_company' => [[], ['_controller' => 'App\\Controller\\Companies\\CreateCompanyController::index'], [], [['text', '/company/create']], [], [], []],
     'homepage' => [[], ['_controller' => 'App\\Controller\\HomePageController::index'], [], [['text', '/']], [], [], []],
+    'app_offers_create_offers' => [[], ['_controller' => 'App\\Controller\\Offers\\CreateOffersController::index'], [], [['text', '/offers/create']], [], [], []],
+    'app_offers' => [[], ['_controller' => 'App\\Controller\\Offers\\OffersController::index'], [], [['text', '/offers']], [], [], []],
+    'app_individual_offer' => [['id'], ['_controller' => 'App\\Controller\\Offers\\OffersController::offer'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/offers']], [], [], []],
+    'app_permission_denied' => [[], ['_controller' => 'App\\Controller\\PermissionDeniedController::index'], [], [['text', '/permission/denied']], [], [], []],
 ];

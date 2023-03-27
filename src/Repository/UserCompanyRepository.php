@@ -39,6 +39,13 @@ class UserCompanyRepository extends ServiceEntityRepository
         }
     }
 
+    public function haveCompany($id)
+    {
+        return $this->getEntityManager()->createQuery('
+            SELECT c FROM App\Entity\UserCompany c WHERE c.User=:id
+            ')->setParameter('id', $id)->getOneOrNullResult();
+    }
+
 //    /**
 //     * @return UserCompany[] Returns an array of UserCompany objects
 //     */

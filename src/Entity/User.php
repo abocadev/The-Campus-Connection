@@ -29,9 +29,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
     #[ORM\Column]
     private ?string $password = null;
 
@@ -44,6 +41,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $CVName = null;
+
+    #[ORM\Column]
+    private ?bool $Activate = null;
 
     public function getId(): ?int
     {
@@ -181,6 +181,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCVName(string $CVName): self
     {
         $this->CVName = $CVName;
+
+        return $this;
+    }
+
+    public function isActivate(): ?bool
+    {
+        return $this->Activate;
+    }
+
+    public function setActivate(bool $Activate): self
+    {
+        $this->Activate = $Activate;
 
         return $this;
     }

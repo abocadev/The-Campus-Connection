@@ -41,6 +41,7 @@ class RegistrationController extends AbstractController
             $user->setPassword($encryptedPassword);
             $user->setCVName('bienvenido.pdf');
             $user->setRoles(['ROLE_USER']);
+            $user->setActivate(false);
             $this->em->persist($user);
             $this->em->flush();
             return $this->redirectToRoute('homepage');

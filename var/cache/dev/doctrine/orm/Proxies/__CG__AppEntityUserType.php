@@ -7,7 +7,7 @@ namespace Proxies\__CG__\App\Entity;
  */
 class UserType extends \App\Entity\UserType implements \Doctrine\Persistence\Proxy
 {
-    use \Symfony\Component\VarExporter\LazyGhostTrait {
+     use \Symfony\Component\VarExporter\LazyGhostTrait {
         initializeLazyObject as __load;
         setLazyObjectAsInitialized as public __setInitialized;
         isLazyObjectInitialized as private;
@@ -21,7 +21,7 @@ class UserType extends \App\Entity\UserType implements \Doctrine\Persistence\Pro
         "\0".parent::class."\0".'name' => [parent::class, 'name', null],
         'id' => [parent::class, 'id', null],
         'name' => [parent::class, 'name', null],
-    ];
+    ];
 
     /**
      * @internal

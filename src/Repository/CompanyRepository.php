@@ -39,6 +39,14 @@ class CompanyRepository extends ServiceEntityRepository
         }
     }
 
+    public function last()
+    {
+        return $this->getEntityManager()->createQuery('
+            SELECT c FROM App\Entity\Company c ORDER BY c.id DESC
+            ')->setMaxResults(1)->getOneOrNullResult();
+    }
+
+
 //    /**
 //     * @return Company[] Returns an array of Company objects
 //     */

@@ -39,6 +39,8 @@ class CompanyTypeRepository extends ServiceEntityRepository
         }
     }
 
+
+
 //    /**
 //     * @return CompanyType[] Returns an array of CompanyType objects
 //     */
