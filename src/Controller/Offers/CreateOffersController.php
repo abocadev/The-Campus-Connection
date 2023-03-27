@@ -12,8 +12,8 @@ class CreateOffersController extends AbstractController
     #[Route('/offers/create', name: 'app_offers_create_offers')]
     public function index(Security $security): Response
     {
-         $user = $security->getUser()->getUserTypeID()->getId();
-         if($user != 2) return $this->redirectToRoute('homepage');
+         $user = $security->getUser();
+         if($user->getUserTypeID()->getId() != 2 || $user == null) return $this->redirectToRoute('homepage');
 
         return $this->render('offers/create_offers/index.html.twig', [
             'controller_name' => 'CreateOffersController',
