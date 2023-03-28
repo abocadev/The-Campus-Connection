@@ -85,7 +85,16 @@ class __TwigTemplate_90b2c06286ec4dd8d01ebe975a98c4d4 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
+        echo "    ";
         echo $this->extensions['Symfony\Bridge\Twig\Extension\DumpExtension']->dump($this->env, $context, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 6, $this->source); })()));
+        echo "
+    ";
+        // line 7
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\DumpExtension']->dump($this->env, $context, (isset($context["company"]) || array_key_exists("company", $context) ? $context["company"] : (function () { throw new RuntimeError('Variable "company" does not exist.', 7, $this->source); })()));
+        echo "
+    ";
+        // line 8
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 8, $this->source); })()), 'form');
         echo "
 ";
         
@@ -108,7 +117,7 @@ class __TwigTemplate_90b2c06286ec4dd8d01ebe975a98c4d4 extends Template
 
     public function getDebugInfo()
     {
-        return array (  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  97 => 8,  93 => 7,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -118,7 +127,9 @@ class __TwigTemplate_90b2c06286ec4dd8d01ebe975a98c4d4 extends Template
 {% block title %}Hello CreateOffersController!{% endblock %}
 
 {% block body %}
-{{ dump(user) }}
+    {{ dump(user) }}
+    {{ dump(company) }}
+    {{ form(form) }}
 {% endblock %}
 ", "offers/create_offers/index.html.twig", "C:\\laragon\\www\\The-Campus-Connection\\templates\\offers\\create_offers\\index.html.twig");
     }

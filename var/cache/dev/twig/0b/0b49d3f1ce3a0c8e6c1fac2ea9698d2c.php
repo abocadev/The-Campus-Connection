@@ -45,65 +45,71 @@ class __TwigTemplate_a5bbdb9259187490156606a036410bf4 extends Template
         // line 2
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage");
         echo "\">Home Page</a></li>
-    <li><a href=\"";
-        // line 3
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offers");
-        echo "\">Ofertas</a></li>
-    <li><a href=\"";
-        // line 4
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_company");
-        echo "\">Companies</a></li>
     ";
-        // line 5
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 5, $this->source); })()), "user", [], "any", false, false, false, 5)) {
-            // line 6
+        // line 3
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 3, $this->source); })()), "user", [], "any", false, false, false, 3)) {
+            // line 4
             echo "        <li><a href=\"#\">Mi perfil</a></li>
         <li><a href=\"";
-            // line 7
+            // line 5
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
             echo "\">Log Out</a></li>
         ";
-            // line 8
-            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 8, $this->source); })()), "user", [], "any", false, false, false, 8), "activate", [], "any", false, false, false, 8) == 0)) {
-                // line 9
+            // line 6
+            if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 6, $this->source); })()), "user", [], "any", false, false, false, 6), "activate", [], "any", false, false, false, 6) == 0)) {
+                // line 7
                 echo "            <h1>Your user is not activated</h1>
         ";
-            } elseif ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,             // line 10
-(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 10, $this->source); })()), "user", [], "any", false, false, false, 10), "UserTypeID", [], "any", false, false, false, 10), "id", [], "any", false, false, false, 10) == 1)) {
-                // line 11
-                echo "            <h1>El usuario es un Alumno</h1>
+            } elseif ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,             // line 8
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 8, $this->source); })()), "user", [], "any", false, false, false, 8), "UserTypeID", [], "any", false, false, false, 8), "id", [], "any", false, false, false, 8) == 1)) {
+                // line 9
+                echo "            <li><a href=\"";
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_offers");
+                echo "\">Ofertas</a></li>
+            <li><a href=\"";
+                // line 10
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_companies");
+                echo "\">Companies</a></li>
+            <h1>El usuario es un Alumno</h1>
         ";
             } elseif ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,             // line 12
 (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 12, $this->source); })()), "user", [], "any", false, false, false, 12), "UserTypeID", [], "any", false, false, false, 12), "id", [], "any", false, false, false, 12) == 2)) {
                 // line 13
-                echo "            <h1>El usuario es una companyia</h1>
-        ";
-            } elseif ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,             // line 14
-(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 14, $this->source); })()), "user", [], "any", false, false, false, 14), "UserTypeID", [], "any", false, false, false, 14), "id", [], "any", false, false, false, 14) == 3)) {
-                // line 15
-                echo "            <h1>EL usuario es un tutor</h1>
+                echo "            <li><a href=\"";
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_my_offers");
+                echo "\">Mis ofertas</a></li>
+            <li><a href=\"";
+                // line 14
+                echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_my_company");
+                echo "\">Mi compañia</a></li>
+            <h1>El usuario es una companyia</h1>
         ";
             } elseif ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,             // line 16
-(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16), "UserTypeID", [], "any", false, false, false, 16), "id", [], "any", false, false, false, 16) == 4)) {
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 16, $this->source); })()), "user", [], "any", false, false, false, 16), "UserTypeID", [], "any", false, false, false, 16), "id", [], "any", false, false, false, 16) == 3)) {
                 // line 17
+                echo "            <h1>EL usuario es un tutor</h1>
+        ";
+            } elseif ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source,             // line 18
+(isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 18, $this->source); })()), "user", [], "any", false, false, false, 18), "UserTypeID", [], "any", false, false, false, 18), "id", [], "any", false, false, false, 18) == 4)) {
+                // line 19
                 echo "            <h1>El usuario es administrador</h1>
         ";
             }
-            // line 19
+            // line 21
             echo "    ";
         } else {
-            // line 20
+            // line 22
             echo "        <li><a href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_registration");
             echo "\">Registration</a></li>
         <li><a href=\"";
-            // line 21
+            // line 23
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\">Login</a></li>
         <h1>El usuario es un invitado</h1>
     ";
         }
-        // line 24
+        // line 26
         echo "</ul>";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -125,23 +131,25 @@ class __TwigTemplate_a5bbdb9259187490156606a036410bf4 extends Template
 
     public function getDebugInfo()
     {
-        return array (  107 => 24,  101 => 21,  96 => 20,  93 => 19,  89 => 17,  87 => 16,  84 => 15,  82 => 14,  79 => 13,  77 => 12,  74 => 11,  72 => 10,  69 => 9,  67 => 8,  63 => 7,  60 => 6,  58 => 5,  54 => 4,  50 => 3,  46 => 2,  43 => 1,);
+        return array (  113 => 26,  107 => 23,  102 => 22,  99 => 21,  95 => 19,  93 => 18,  90 => 17,  88 => 16,  83 => 14,  78 => 13,  76 => 12,  71 => 10,  66 => 9,  64 => 8,  61 => 7,  59 => 6,  55 => 5,  52 => 4,  50 => 3,  46 => 2,  43 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("<ul>
     <li><a href=\"{{ path('homepage') }}\">Home Page</a></li>
-    <li><a href=\"{{ path('app_offers') }}\">Ofertas</a></li>
-    <li><a href=\"{{ path('app_company') }}\">Companies</a></li>
     {% if app.user %}
         <li><a href=\"#\">Mi perfil</a></li>
         <li><a href=\"{{ path('app_logout') }}\">Log Out</a></li>
         {% if app.user.activate == 0 %}
             <h1>Your user is not activated</h1>
         {% elseif app.user.UserTypeID.id == 1 %}
+            <li><a href=\"{{ path('app_offers') }}\">Ofertas</a></li>
+            <li><a href=\"{{ path('app_companies') }}\">Companies</a></li>
             <h1>El usuario es un Alumno</h1>
         {% elseif app.user.UserTypeID.id == 2 %}
+            <li><a href=\"{{ path('app_my_offers') }}\">Mis ofertas</a></li>
+            <li><a href=\"{{ path('app_my_company') }}\">Mi compañia</a></li>
             <h1>El usuario es una companyia</h1>
         {% elseif app.user.UserTypeID.id == 3 %}
             <h1>EL usuario es un tutor</h1>

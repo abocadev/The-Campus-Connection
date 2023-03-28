@@ -1,15 +1,17 @@
 <ul>
     <li><a href="{{ path('homepage') }}">Home Page</a></li>
-    <li><a href="{{ path('app_offers') }}">Ofertas</a></li>
-    <li><a href="{{ path('app_company') }}">Companies</a></li>
     {% if app.user %}
         <li><a href="#">Mi perfil</a></li>
         <li><a href="{{ path('app_logout') }}">Log Out</a></li>
         {% if app.user.activate == 0 %}
             <h1>Your user is not activated</h1>
         {% elseif app.user.UserTypeID.id == 1 %}
+            <li><a href="{{ path('app_offers') }}">Ofertas</a></li>
+            <li><a href="{{ path('app_companies') }}">Companies</a></li>
             <h1>El usuario es un Alumno</h1>
         {% elseif app.user.UserTypeID.id == 2 %}
+            <li><a href="{{ path('app_my_offers') }}">Mis ofertas</a></li>
+            <li><a href="{{ path('app_my_company') }}">Mi compañia</a></li>
             <h1>El usuario es una companyia</h1>
         {% elseif app.user.UserTypeID.id == 3 %}
             <h1>EL usuario es un tutor</h1>

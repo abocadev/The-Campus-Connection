@@ -2,23 +2,23 @@
 
 namespace App\Repository;
 
+use App\Entity\Company;
 use App\Entity\Offers;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Offers>
- *
- * @method Offers|null find($id, $lockMode = null, $lockVersion = null)
- * @method Offers|null findOneBy(array $criteria, array $orderBy = null)
- * @method Offers[]    findAll()
- * @method Offers[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
 class OffersRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Offers::class);
+    }
+
+    public function last()
+    {
+        return $this->getEntityManager()->createQuery('
+            SELECT c FROM App\Entity\Offers c ORDER BY c.id DESC
+            ')->setMaxResults(1)->getOneOrNullResult();
     }
 
     public function save(Offers $entity, bool $flush = false): void
@@ -37,6 +37,13 @@ class OffersRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function allOffersCompany(Company $company): array
+    {
+        return $this->getEntityManager()->createQuery('
+            SELECT o FROM App\Entity\Offers o WHERE o.Company=:company
+        ')->setParameter('company', $company->getId())->getResult();
     }
 
 //    /**

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MyOffersController!{% endblock %}
+
+{% block body %}
+    {% if my_offers != null %}
+        {% for offer in my_offers %}
+            {{ dump(offer) }}
+        {% endfor %}
+    {% else %}
+        <h1>Tu empresa no tiene ofertas</h1>
+    {% endif %}
+    <button><a href="{{ path('app_my_offers_create') }}">Crear oferta</a></button>
+{% endblock %}

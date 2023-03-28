@@ -372,6 +372,14 @@
         <argument type="service" id=".service_locator.CshazM0.App\Controller\Companies\CreateCompanyController"/>
       </call>
     </service>
+    <service id="App\Controller\Companies\MyCompanyController" class="App\Controller\Companies\MyCompanyController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Controller\Companies\MyCompanyController"/>
+      </call>
+    </service>
     <service id="App\Controller\HomePageController" class="App\Controller\HomePageController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -379,9 +387,18 @@
         <argument type="service" id=".service_locator.CshazM0.App\Controller\HomePageController"/>
       </call>
     </service>
+    <service id="App\Controller\Offers\Company\MyOffersController" class="App\Controller\Offers\Company\MyOffersController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Controller\Offers\Company\MyOffersController"/>
+      </call>
+    </service>
     <service id="App\Controller\Offers\CreateOffersController" class="App\Controller\Offers\CreateOffersController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.CshazM0.App\Controller\Offers\CreateOffersController"/>
       </call>
@@ -416,6 +433,10 @@
       <argument type="service" id="security.user_password_hasher"/>
     </service>
     <service id="App\Form\CompanyType" class="App\Form\CompanyType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
+    <service id="App\Form\OffersType" class="App\Form\OffersType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
@@ -1293,6 +1314,7 @@
       </argument>
       <argument type="collection">
         <argument>App\Form\CompanyType</argument>
+        <argument>App\Form\OffersType</argument>
         <argument>App\Form\UserAlumnType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -3361,7 +3383,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.jCWhND1"/>
+      <argument type="service" id=".service_locator.Ub5GLHO"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -6323,9 +6345,15 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Companies\CreateCompanyController" class="App\Controller\Companies\CreateCompanyController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Companies\CreateCompanyController" class="App\Controller\Companies\CreateCompanyController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Companies\CreateCompanyController" class="App\Controller\Companies\CreateCompanyController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Companies\MyCompanyController" class="App\Controller\Companies\MyCompanyController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Companies\MyCompanyController" class="App\Controller\Companies\MyCompanyController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Companies\MyCompanyController" class="App\Controller\Companies\MyCompanyController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomePageController" class="App\Controller\HomePageController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomePageController" class="App\Controller\HomePageController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomePageController" class="App\Controller\HomePageController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Offers\Company\MyOffersController" class="App\Controller\Offers\Company\MyOffersController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Offers\Company\MyOffersController" class="App\Controller\Offers\Company\MyOffersController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Offers\Company\MyOffersController" class="App\Controller\Offers\Company\MyOffersController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Offers\CreateOffersController" class="App\Controller\Offers\CreateOffersController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Offers\CreateOffersController" class="App\Controller\Offers\CreateOffersController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Offers\CreateOffersController" class="App\Controller\Offers\CreateOffersController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6345,6 +6373,8 @@
     <service id=".abstract.instanceof.App\DataFixtures\Users" class="App\DataFixtures\Users" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CompanyType" class="App\Form\CompanyType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CompanyType" class="App\Form\CompanyType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\OffersType" class="App\Form\OffersType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\OffersType" class="App\Form\OffersType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserAlumnType" class="App\Form\UserAlumnType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserAlumnType" class="App\Form\UserAlumnType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CompanyRepository" class="App\Repository\CompanyRepository" autowire="true" abstract="true"/>
@@ -6720,12 +6750,15 @@
         <argument key="security" type="service_closure" id="security.helper"/>
       </argument>
     </service>
-    <service id=".service_locator.6tqCrp2" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Cni6pga" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\Auth\LoginController::index" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\Auth\RegistrationController::index" type="service_closure" id=".service_locator.Mhqdd2r"/>
         <argument key="App\Controller\Companies\CreateCompanyController::index" type="service_closure" id=".service_locator.YgYapZ6"/>
+        <argument key="App\Controller\Companies\MyCompanyController::edit" type="service_closure" id=".service_locator.YgYapZ6"/>
+        <argument key="App\Controller\Companies\MyCompanyController::index" type="service_closure" id=".service_locator.YgYapZ6"/>
+        <argument key="App\Controller\Offers\Company\MyOffersController::index" type="service_closure" id=".service_locator.YgYapZ6"/>
         <argument key="App\Controller\Offers\CreateOffersController::index" type="service_closure" id=".service_locator.YgYapZ6"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -6734,6 +6767,9 @@
         <argument key="App\Controller\Auth\LoginController:index" type="service_closure" id=".service_locator.rSTd.nA"/>
         <argument key="App\Controller\Auth\RegistrationController:index" type="service_closure" id=".service_locator.Mhqdd2r"/>
         <argument key="App\Controller\Companies\CreateCompanyController:index" type="service_closure" id=".service_locator.YgYapZ6"/>
+        <argument key="App\Controller\Companies\MyCompanyController:edit" type="service_closure" id=".service_locator.YgYapZ6"/>
+        <argument key="App\Controller\Companies\MyCompanyController:index" type="service_closure" id=".service_locator.YgYapZ6"/>
+        <argument key="App\Controller\Offers\Company\MyOffersController:index" type="service_closure" id=".service_locator.YgYapZ6"/>
         <argument key="App\Controller\Offers\CreateOffersController:index" type="service_closure" id=".service_locator.YgYapZ6"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -6909,10 +6945,11 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.jCWhND1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Ub5GLHO" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CompanyType" type="service_closure" id="App\Form\CompanyType"/>
+        <argument key="App\Form\OffersType" type="service_closure" id="App\Form\OffersType"/>
         <argument key="App\Form\UserAlumnType" type="service_closure" id="App\Form\UserAlumnType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -7307,9 +7344,21 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
+    <service id=".service_locator.CshazM0.App\Controller\Companies\MyCompanyController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Companies\MyCompanyController"/>
+      <argument>App\Controller\Companies\MyCompanyController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
     <service id=".service_locator.CshazM0.App\Controller\HomePageController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\HomePageController"/>
       <argument>App\Controller\HomePageController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
+    <service id=".service_locator.CshazM0.App\Controller\Offers\Company\MyOffersController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Offers\Company\MyOffersController"/>
+      <argument>App\Controller\Offers\Company\MyOffersController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
@@ -7608,12 +7657,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.6tqCrp2"/>
+      <argument type="service" id=".service_locator.Cni6pga"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.6tqCrp2"/>
+      <argument type="service" id=".service_locator.Cni6pga"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8580,7 +8629,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.6tqCrp2"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.Cni6pga"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8601,9 +8650,9 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
-    <service id=".service_locator.C9FXYSd" alias=".service_locator.6tqCrp2"/>
+    <service id=".service_locator.uC3AYIW" alias=".service_locator.Cni6pga"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
-    <service id=".service_locator.zQRy0KL" alias=".service_locator.jCWhND1"/>
+    <service id=".service_locator.aKPA3oa" alias=".service_locator.Ub5GLHO"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.VZoQk0z" alias=".service_locator.CshazM0"/>

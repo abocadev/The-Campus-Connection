@@ -22,7 +22,7 @@ class CompanyController extends AbstractController
     }
 
 
-    #[Route('/company', name: 'app_company')]
+    #[Route('/companies', name: 'app_companies')]
     public function index(): Response
     {
         $companies = $this->em->getRepository(Company::class)->findAll();

@@ -35,15 +35,10 @@ class OffersController extends AbstractController
     #[Route('/offers/{id}', name: 'app_individual_offer')]
     public function offer($id): Response
     {
-        $offers = $this->em->getRepository(Offers::class)->findAll();
 
-        if( sizeof($offers) <= 0) {
-            return $this->redirectToRoute('app_offers');
-        }
+        $lastOffer = $this->em->getRepository(Offers::class)->last();
 
-        $lastOffer = $this->em->getRepository(Offers::class)->last()->getId();
-
-        if($id > $lastOffer) {
+        if($lastOffer== null || $id > $lastOffer->getId()) {
             return $this->redirectToRoute('app_offers');
         }
 

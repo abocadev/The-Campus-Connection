@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MyCompanyController!{% endblock %}
+
+{% block body %}
+    {{ dump(company) }}
+    <a href="{{ path('app_my_company_edit') }}">Editar el formulario</a>
+{% endblock %}
