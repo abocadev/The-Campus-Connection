@@ -16,6 +16,7 @@
 
 
 -- Volcando estructura de base de datos para tcc
+DROP DATABASE IF EXISTS `tcc`;
 CREATE DATABASE IF NOT EXISTS `tcc` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `tcc`;
 
@@ -31,19 +32,20 @@ CREATE TABLE IF NOT EXISTS `company` (
   PRIMARY KEY (`id`),
   KEY `IDX_4FBF094FCCC6F036` (`company_type_id_id`),
   CONSTRAINT `FK_4FBF094FCCC6F036` FOREIGN KEY (`company_type_id_id`) REFERENCES `company_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla tcc.company: ~8 rows (aproximadamente)
+-- Volcando datos para la tabla tcc.company: ~10 rows (aproximadamente)
 INSERT INTO `company` (`id`, `company_type_id_id`, `name`, `description`, `url_image`, `location`, `url_web`) VALUES
 	(1, 13, 'Compañia', 'Esta es la descripción de la compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
-	(2, 13, 'Compañia', 'Esta es la descripción de la compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
-	(3, 13, 'Compañia', 'Esta es la descripción de la compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
+	(2, 13, 'Compañia Modificada', 'Esta es la descripción de la compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
+	(3, 7, 'Compañia', 'Esta es la descripción de la compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
 	(4, 13, 'Compañia', 'Esta es la descripción de la compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
 	(5, 13, 'Compañia', 'Esta es la descripción de la compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
 	(6, 13, 'Compañia', 'Esta es la descripción de la compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
 	(7, 5, 'Nueva Compañia', 'Esta es la nueva compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
 	(8, 5, 'Nueva Compañia', 'Esta es la nueva compañia', 'URL_image.jpg', 'Calle mayor, 1', 'www.google.com'),
-	(9, 19, 'esta es la super nueva companyia', 'esta es la super nueva companyia', 'ujuuu,jpg', 'lcatyion, 1', 'asdlf.net');
+	(9, 19, 'esta es la super nueva companyia', 'esta es la super nueva companyia', 'ujuuu,jpg', 'lcatyion, 1', 'asdlf.net'),
+	(10, 14, 'Second company', 'Esta es la segunda compañia que creo', 'esta imagen.pdf', 'esta es mi localización', 'este es mi enlace');
 
 -- Volcando estructura para tabla tcc.company_type
 CREATE TABLE IF NOT EXISTS `company_type` (
@@ -84,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
--- Volcando datos para la tabla tcc.doctrine_migration_versions: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla tcc.doctrine_migration_versions: ~1 rows (aproximadamente)
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 	('DoctrineMigrations\\Version20230327172201', '2023-03-27 19:24:32', 551);
 
@@ -110,9 +112,13 @@ CREATE TABLE IF NOT EXISTS `modality` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla tcc.modality: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla tcc.modality: ~3 rows (aproximadamente)
+INSERT INTO `modality` (`id`, `name`) VALUES
+	(1, 'Presencial'),
+	(2, 'Híbrido'),
+	(3, 'Remoto');
 
 -- Volcando estructura para tabla tcc.offers
 CREATE TABLE IF NOT EXISTS `offers` (
@@ -132,9 +138,12 @@ CREATE TABLE IF NOT EXISTS `offers` (
   KEY `IDX_DA4604272D6D889B` (`modality_id`),
   CONSTRAINT `FK_DA4604272D6D889B` FOREIGN KEY (`modality_id`) REFERENCES `modality` (`id`),
   CONSTRAINT `FK_DA460427979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla tcc.offers: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla tcc.offers: ~2 rows (aproximadamente)
+INSERT INTO `offers` (`id`, `company_id`, `modality_id`, `title`, `description`, `positions`, `location`, `activated`, `activated_by_admin`, `creation_date`, `updated_date`) VALUES
+	(1, 9, 2, 'hola', 'hola', 123, 'hola', 1, 0, '2023-03-28 17:51:33', '2023-03-28 17:51:33'),
+	(2, 9, 2, 'hola', 'hola', 123, 'hola', 1, 0, '2023-03-28 17:51:53', '2023-03-28 17:51:53');
 
 -- Volcando estructura para tabla tcc.tutor_user
 CREATE TABLE IF NOT EXISTS `tutor_user` (
@@ -149,15 +158,6 @@ CREATE TABLE IF NOT EXISTS `tutor_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla tcc.tutor_user: ~0 rows (aproximadamente)
-
--- Volcando estructura para tabla tcc.type_offers
-CREATE TABLE IF NOT EXISTS `type_offers` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Volcando datos para la tabla tcc.type_offers: ~0 rows (aproximadamente)
 
 -- Volcando estructura para tabla tcc.user
 CREATE TABLE IF NOT EXISTS `user` (
@@ -175,14 +175,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`),
   KEY `IDX_8D93D649D62FDF4C` (`user_type_id_id`),
   CONSTRAINT `FK_8D93D649D62FDF4C` FOREIGN KEY (`user_type_id_id`) REFERENCES `user_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla tcc.user: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla tcc.user: ~5 rows (aproximadamente)
 INSERT INTO `user` (`id`, `user_type_id_id`, `name`, `surname`, `email`, `roles`, `password`, `phone`, `cvname`, `activate`) VALUES
 	(1, 1, 'Alumno', 'IFP', 'alumno@ifp.es', '["ROLE_USER"]', '$2y$13$TnQl6kQDHmb.Acf/EVPkOORtfZ5/6.4oNe7BaH2qwZLwQYl9HMbwO', 123456789, 'bienvenido.pdf', 0),
 	(3, 4, 'Administrator', 'IFP', 'administrator@ifp.es', '["ROLE_USER"]', '$2y$13$qGnu9xvjzq0ecyzPE1Smku/kqJkNZzupv40UCHKKfZZYrAOF3.J/G', 123456789, 'bienvenido.pdf', 0),
 	(4, 2, 'Company', 'IFP', 'company@ifp.es', '["ROLE_USER"]', '$2y$13$HIcsG6ThWuK3ZM7LU41y6ex/rwx424RZITdsibOqwoAcYGtaJU4CG', 123456789, 'bienvenido.pdf', 1),
-	(5, 3, 'Tutor', 'IFP', 'Tutor@ifp.es', '["ROLE_USER"]', '$2y$13$NTbT7f9Ne7sp5OMfzgkZFOTB62FhTdVKNW8MlrhYNutdEGv7wgwI.', 123456789, 'bienvenido.pdf', 0);
+	(5, 3, 'Tutor', 'IFP', 'Tutor@ifp.es', '["ROLE_USER"]', '$2y$13$NTbT7f9Ne7sp5OMfzgkZFOTB62FhTdVKNW8MlrhYNutdEGv7wgwI.', 123456789, 'bienvenido.pdf', 0),
+	(6, 2, 'company2', 'IFP', 'company2@ifp.es', '["ROLE_USER"]', '$2y$13$VnFPn7qomHCrzh8eq3.uFeC//f9l2J/ZP3DdYg8CXQo2sOHQDw89q', 1857295, 'bienvenido.pdf', 1);
 
 -- Volcando estructura para tabla tcc.user_company
 CREATE TABLE IF NOT EXISTS `user_company` (
@@ -194,11 +195,12 @@ CREATE TABLE IF NOT EXISTS `user_company` (
   KEY `IDX_17B21745979B1AD6` (`company_id`),
   CONSTRAINT `FK_17B21745979B1AD6` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`),
   CONSTRAINT `FK_17B21745A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Volcando datos para la tabla tcc.user_company: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla tcc.user_company: ~2 rows (aproximadamente)
 INSERT INTO `user_company` (`id`, `user_id`, `company_id`) VALUES
-	(2, 4, 9);
+	(2, 4, 9),
+	(3, 6, 10);
 
 -- Volcando estructura para tabla tcc.user_type
 CREATE TABLE IF NOT EXISTS `user_type` (
