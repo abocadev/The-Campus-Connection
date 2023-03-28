@@ -447,6 +447,6 @@ class __TwigTemplate_1ff8063568bcff703a9ca9ed938aa1ad extends Template
         </div>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/twig.html.twig", "C:\\Users\\Albert Bocanegra\\Documents\\GitHub\\The-Campus-Connection\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\twig.html.twig");
+", "@WebProfiler/Collector/twig.html.twig", "E:\\GIT\\The-Campus-Connection\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\twig.html.twig");
     }
 }
