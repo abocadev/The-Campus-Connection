@@ -7,15 +7,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class OffersController extends AbstractController
 {
 
     private $em;
-
-    /**
-     * @param $em
-     */
     public function __construct(EntityManagerInterface $em)
     {
         $this->em = $em;
@@ -23,9 +20,15 @@ class OffersController extends AbstractController
 
 
     #[Route('/offers', name: 'app_offers')]
-    public function index(): Response
+    public function index(Security $security): Response
     {
+        $user = $security->getUser();
+        if($user != null && $user->getUserTypeID()->getId() != 1) {
+            return $this->redirectToRoute('homepage');
+        }
+
         $offers = $this->em->getRepository(Offers::class)->findAll();
+
         return $this->render('offers/index.html.twig', [
             'controller_name' => 'OffersController',
             'offers' => $offers
