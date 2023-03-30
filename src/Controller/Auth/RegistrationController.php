@@ -42,6 +42,8 @@ class RegistrationController extends AbstractController
             $user->setCVName('bienvenido.pdf');
             $user->setRoles(['ROLE_USER']);
             $user->setActivate(false);
+            if($user->getUserTypeID() == 1) $user->setConnecoins(4);
+            else $user->setConnecoins(null);
             $this->em->persist($user);
             $this->em->flush();
             return $this->redirectToRoute('homepage');

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Nullable;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Config\Security\ProviderConfig\LdapConfig;
@@ -39,8 +40,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $phone = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $CVName = null;
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $connecoins;
 
     #[ORM\Column]
     private ?bool $Activate = null;
@@ -196,5 +200,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return int|null
+     */
+    public function getConnecoins(): ?int
+    {
+        return $this->connecoins;
+    }
+
+    /**
+     * @param int|null $connecoins
+     */
+    public function setConnecoins(?int $connecoins): void
+    {
+        $this->connecoins = $connecoins;
+    }
+
 
 }

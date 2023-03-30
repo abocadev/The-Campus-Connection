@@ -29,6 +29,7 @@ class UserAlumnType extends AbstractType
             'choices' => $array,
             'choice_label' => 'name'
         ];
+
         $builder
             ->add('name')
             ->add('surname')

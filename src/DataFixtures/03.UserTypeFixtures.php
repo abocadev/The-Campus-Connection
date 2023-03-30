@@ -38,12 +38,6 @@ class UserTypeFixtures extends Fixture
 
 
         $userType = new UserType();
-        $userType->setName("Tutor");
-        $manager->persist($userType);
-        $manager->flush();
-
-
-        $userType = new UserType();
         $userType->setName("Administrator");
         $manager->persist($userType);
         $manager->flush();
