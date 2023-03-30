@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ offer.title }}!{% endblock %}
+
+{% block body %}
+   
+   {{ dump(offer) }}
+   <h1>Candidatos:</h1>
+      {% for x in candidates %}
+         {% if x %}
+            {{ dump(x.user.name) }}
+         {% endif %}
+      {% endfor %}
+{% endblock %}

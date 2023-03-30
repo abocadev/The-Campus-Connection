@@ -1,66 +1,66 @@
 TIPOS DE USUARIOS QUE VAN A HABER:
 - Alumnos
 - Empresas
-- ¿Administrador?
+- ï¿½Administrador?
 
-HOME (Visualizar las 5 últimas ofertas y las 5 últimas noticias)
+HOME (Visualizar las 5 ï¿½ltimas ofertas y las 5 ï¿½ltimas noticias)
 
 OFERTAS:
- · Visualizar ofertas
- · Visualizar OFERTA
- · Mis candidaturas (Alumno)
- · Visualizar mis oferta (Empresas)
- · Crear OFERTA (Empresas)
- · Editar OFERTA (Empresas)
+ ï¿½ Visualizar ofertas
+ ï¿½ Visualizar OFERTA
+ ï¿½ Mis candidaturas (Alumno)
+ ï¿½ Visualizar mis oferta (Empresas)
+ ï¿½ Crear OFERTA (Empresas)
+ ï¿½ Editar OFERTA (Empresas)
 
 EMPRESAS:
- · Visualizar las empresas
- · Visualizar la empresa
- · Seleccionar empresa (Empresas)
- · Crear la empresa (Empresas)
- · Editar la empresa (Empresas)
+ ï¿½ Visualizar las empresas
+ ï¿½ Visualizar la empresa
+ ï¿½ Seleccionar empresa (Empresas)
+ ï¿½ Crear la empresa (Empresas)
+ ï¿½ Editar la empresa (Empresas)
 
 NOTICIAS:
- · Visualizar las noticias
- · Visualizar la noticia
+ ï¿½ Visualizar las noticias
+ ï¿½ Visualizar la noticia
  
 MI PERFIL:
- · Editar 
- · Añadir CV
+ ï¿½ Editar 
+ ï¿½ Aï¿½adir CV
 
-POLÍTICA DE PRIVACIDAD
+POLÃ­TICA DE PRIVACIDAD
  
 CONTACTA CON NOSOTROS
-
 
 TAREAS BACKEND:
 
 Alumno:
 
 	HOME:
-		- Mostrar las 5 últimas ofertas
-		- Mostrar las 5 últimas noticias
+		- Mostrar las 5 ï¿½ltimas ofertas
+		- Mostrar las 5 ï¿½ltimas noticias
 		
 	NOTICIAS:
 		- Mostrar todas las noticias (Alumno e Invitado)
 		- Mostrar la noticia (Alumno e Invitado)
 		
 	OFERTAS:
-		X Mostrar todas las ofertas (Alumno e Invitado) 
-		X Mostrar una oferta (Alumno e Invitado)
-		- Solicitar una oferta (Alumno)
+	    x Crear oferta
+		x Mostrar todas las ofertas (Alumno e Invitado)
+		x Mostrar una oferta (Alumno e Invitado)
+		x Solicitar una oferta (Alumno)
 		- Editar oferta (Empresa)
 		- Desactivar oferta (Empresa)
 		- Desactivar oferta por el Administrador (Administrador)
 		
 	Empresas:
-		- Mostrar todas las empresas (Alumno e Invitado) si tienen alguna oferta disponible.
+		x Mostrar todas las empresas (Alumno e Invitado) si tienen alguna oferta disponible.
 		- Mostrar una empresa (Alumno e Invitado)
 		- Desactivar una empresa (Administrador) {
-			Cuando se desactive una emprea, pasará lo siguiente:
+			Cuando se desactive una emprea, pasarï¿½ lo siguiente:
 				Se desactivaran las ofertas que tiene la empresa.
-				Los usuarios no podrán visualizar si la oferta es visible o no.
-				Si la empresa esta desactivada ningún usuario puede hacer nada
+				Los usuarios no podrï¿½n visualizar si la oferta es visible o no.
+				Si la empresa esta desactivada ningï¿½n usuario puede hacer nada
 		}
 	
 	MIS CANDIDATURAS:
@@ -71,16 +71,16 @@ Alumno:
 		- Mostrar los datos del perfil
 		- Editar los datos del perfil
 		- Eliminar el CV (Alumno)
-		- Añadir el CV (Alumno)
+		- Aï¿½adir el CV (Alumno)
 		- Descargar el CV (Alumno)
 		
 	OFERTAS DE MI EMPRESA:
-		- Visualizar todas las ofertas por mi empresa, esten o no desactivadas por el administrador y que indique por quien estan desactivadas (Empresa).
-		- Visualizar la oferta de la empresa, indicando si están desactivadas o no (y si lo están por el administrador) (Empresa)
-		- Visualizar los candidatos que están en cada oferta {
+		x Visualizar todas las ofertas por mi empresa, esten o no desactivadas por el administrador y que indique por quien estan desactivadas (Empresa).
+		- Visualizar la oferta de la empresa, indicando si estï¿½n desactivadas o no (y si lo estï¿½n por el administrador) (Empresa)
+		- Visualizar los candidatos que estï¿½n en cada oferta {
 			Pueden visualizar su nombre, correo y telefono.
 			Las empresas pueden descargar el CV del alumno apuntado.
-			Con un botón de descartar pueden indicar si han pasado la prueba o no.
+			Con un botï¿½n de descartar pueden indicar si han pasado la prueba o no.
 		}
 		
 	CONTACTA CON NOSOTROS:

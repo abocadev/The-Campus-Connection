@@ -6,9 +6,10 @@
     {% if my_offers != null %}
         {% for offer in my_offers %}
             {{ dump(offer) }}
+            <a href="{{ path('app_individual_my_offers', {'id': offer.id}) }}">Ir a la oferta</a>
         {% endfor %}
     {% else %}
         <h1>Tu empresa no tiene ofertas</h1>
     {% endif %}
-    <button><a href="{{ path('app_my_offers_create') }}">Crear oferta</a></button>
+    <button><a href="{{ path('app_offers_create_offers') }}">Crear oferta</a></button>
 {% endblock %}

@@ -25,7 +25,7 @@ class CreateOffersController extends AbstractController
     }
 
 
-    #[Route('/my-offers/create', name: 'app_offers_create_offers')]
+    #[Route('/create-offer', name: 'app_offers_create_offers')]
     public function index(Security $security, Request $request): Response
     {
         $user = $security->getUser();

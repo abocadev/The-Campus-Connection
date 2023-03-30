@@ -3,5 +3,19 @@
 {% block title %}{{ offer.title }}!{% endblock %}
 
 {% block body %}
+   
    {{ dump(offer) }}
+   
+   {% if app.user %}
+      {% if apuntado == 1 %}
+         <p>Ya te has apuntado a esta oferta</p>
+      {% else %}
+         {% if app.user.UserTypeID.id == 1 %}
+            {{ form(form) }}
+         {% endif %}
+      {% endif %}
+   {% else %}
+      <p>No te puedes apuntar a la oferta, porque no has iniciado sesion</p>
+      <a href="{{ path('app_login') }}"></a>
+   {% endif %}
 {% endblock %}
