@@ -1,13 +1,14 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\old;
 
 use App\Entity\CompanyType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class CompaniesTypes extends Fixture
+class App02CompaniesTypes extends Fixture
 {
+
     public function load(ObjectManager $manager): void
     {
         // $product = new Product();

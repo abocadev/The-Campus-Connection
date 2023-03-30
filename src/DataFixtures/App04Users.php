@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\old;
 
 use App\Entity\User;
 use App\Entity\UserType;
@@ -8,8 +8,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class Users extends Fixture
+class App04Users
 {
+
     private $passwordHasher;
 
     /**
@@ -19,8 +20,6 @@ class Users extends Fixture
     {
         $this->passwordHasher = $passwordHasher;
     }
-
-
     public function load(ObjectManager $manager): void
     {
         $alumnType = $manager->getRepository(UserType::class)->find(1);
@@ -82,9 +81,10 @@ class Users extends Fixture
 
 
         $manager->persist($alumn);
+        $manager->flush();
         $manager->persist($company);
+        $manager->flush();
         $manager->persist($admin);
         $manager->flush();
-
     }
 }

@@ -1,16 +1,14 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\old;
 
-use App\Entity\User;
 use App\Entity\UserType;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserTypeFixtures extends Fixture
+class App03UserTypeFixtures extends Fixture
 {
-
     private $passwordHasher;
 
     /**
@@ -20,12 +18,8 @@ class UserTypeFixtures extends Fixture
     {
         $this->passwordHasher = $passwordHasher;
     }
-
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
         $userType = new UserType();
         $userType->setName("Alumno");
         $manager->persist($userType);

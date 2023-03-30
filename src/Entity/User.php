@@ -44,7 +44,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $CVName = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private ?int $connecoins;
+    private ?int $connecoins = null;
 
     #[ORM\Column]
     private ?bool $Activate = null;
@@ -177,18 +177,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCVName(): ?string
-    {
-        return $this->CVName;
-    }
-
-    public function setCVName(string $CVName): self
-    {
-        $this->CVName = $CVName;
-
-        return $this;
-    }
-
     public function isActivate(): ?bool
     {
         return $this->Activate;
@@ -199,6 +187,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->Activate = $Activate;
 
         return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCVName(): ?string
+    {
+        return $this->CVName;
+    }
+
+    /**
+     * @param string|null $CVName
+     */
+    public function setCVName(?string $CVName): void
+    {
+        $this->CVName = $CVName;
     }
 
     /**
@@ -216,6 +220,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->connecoins = $connecoins;
     }
+
 
 
 }
