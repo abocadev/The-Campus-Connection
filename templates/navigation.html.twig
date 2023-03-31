@@ -8,6 +8,7 @@
         {% if app.user.activate == 0 %}
             <h1>Your user is not activated</h1>
         {% elseif app.user.UserTypeID.id == 1 %}
+            <p>Connecoins: {{ app.user.connecoins }}</p>
             <h1>El usuario es un Alumno</h1>
         {% elseif app.user.UserTypeID.id == 2 %}
             <li><a href="{{ path('app_my_offers') }}">Mis ofertas</a></li>

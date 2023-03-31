@@ -39,7 +39,6 @@ class OffersController extends AbstractController
     public function offer($id, Security $security, Request $request): Response
     {
         $user = $security->getUser();
-
         $lastOffer = $this->em->getRepository(Offers::class)->last();
 
         if($lastOffer == null || $id > $lastOffer->getId()) {
@@ -62,10 +61,13 @@ class OffersController extends AbstractController
             }
         }
 
-        if($user != null && $user->getUserTypeID()->getId() == 1 && $form->isSubmitted() && $form->isValid()){
+        if($user != null && $user->getUserTypeID()->getId() == 1 && $form->isSubmitted() && $form->isValid() && $user->getConnecoins() > 0){
+
+            $user->setConnecoins($user->getConnecoins() - 1);
 
             $userToOffer->setOffer($offer);
             $userToOffer->setUser($user);
+            $userToOffer->setDate(new \DateTime());
 
             $this->em->persist($userToOffer);
             $this->em->flush();

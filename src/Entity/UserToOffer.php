@@ -21,6 +21,9 @@ class UserToOffer
     #[ORM\JoinColumn(nullable: false)]
     private ?Offers $Offer = null;
 
+    #[ORM\Column]
+    private ?\DateTime $date;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,5 +51,21 @@ class UserToOffer
         $this->Offer = $Offer;
 
         return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDate(): ?\DateTime
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param \DateTime|null $date
+     */
+    public function setDate(?\DateTime $date): void
+    {
+        $this->date = $date;
     }
 }

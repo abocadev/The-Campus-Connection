@@ -10,7 +10,9 @@
       {% if apuntado == 1 %}
          <p>Ya te has apuntado a esta oferta</p>
       {% else %}
-         {% if app.user.UserTypeID.id == 1 %}
+         {% if app.user.connecoins == 0 %}
+            <p>No tienes los suficientes connecoins</p>
+         {% elseif app.user.UserTypeID.id == 1 %}
             {{ form(form) }}
          {% endif %}
       {% endif %}
