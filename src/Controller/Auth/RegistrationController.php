@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -27,7 +28,7 @@ class RegistrationController extends AbstractController
 
 
     #[Route('/registration', name: 'app_registration')]
-    public function index(Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    public function index(Request $request, UserPasswordHasherInterface $passwordHasher, SluggerInterface $slugger): Response
     {
         $user = new User();
         $form = $this->createForm(UserAlumnType::class, $user);
@@ -42,8 +43,26 @@ class RegistrationController extends AbstractController
             $user->setCVName('bienvenido.pdf');
             $user->setRoles(['ROLE_USER']);
             $user->setActivate(false);
-            if($user->getUserTypeID() == 1) $user->setConnecoins(4);
-            else $user->setConnecoins(null);
+            if($user->getUserTypeID() == 1) {
+                $user->setConnecoins(4);
+                $brochurefile = $form->get('cvname')->getData();
+                if($brochurefile){
+                    $originalFileName = pathinfo($brochurefile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = $slugger->slug($originalFileName);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$brochurefile->guessExtension();
+                    try{
+                        $brochurefile->move(
+                            $this->getParameter('cv_files'),
+                            $newFilename
+                        );
+                    }catch (\Exception $e){
+                    }
+                    $user->setCVName($newFilename);
+                }
+            }else{
+                $user->setConnecoins(null);
+                $user->setCVName(null);
+            }
             $this->em->persist($user);
             $this->em->flush();
             return $this->redirectToRoute('homepage');

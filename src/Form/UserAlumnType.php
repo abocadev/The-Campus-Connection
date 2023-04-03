@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\UserType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -12,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserAlumnType extends AbstractType
@@ -36,6 +39,9 @@ class UserAlumnType extends AbstractType
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class)
             ->add('phone', TextType::class)
+            ->add('cvname', FileType::class, [
+                'required' => false,
+            ])
             ->add('UserTypeID', ChoiceType::class, $options)
             ->add('submit', SubmitType::class)
         ;

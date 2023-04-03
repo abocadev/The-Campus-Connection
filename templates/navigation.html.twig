@@ -1,27 +1,66 @@
-<ul>
-    <li><a href="{{ path('homepage') }}">Home Page</a></li>
-    <li><a href="{{ path('app_offers') }}">Ofertas</a></li>
-    <li><a href="{{ path('app_companies') }}">Companies</a></li>
-    {% if app.user %}
-        <li><a href="#">Mi perfil</a></li>
-        <li><a href="{{ path('app_logout') }}">Log Out</a></li>
-        {% if app.user.activate == 0 %}
-            <h1>Your user is not activated</h1>
-        {% elseif app.user.UserTypeID.id == 1 %}
-            <p>Connecoins: {{ app.user.connecoins }}</p>
-            <h1>El usuario es un Alumno</h1>
-        {% elseif app.user.UserTypeID.id == 2 %}
-            <li><a href="{{ path('app_my_offers') }}">Mis ofertas</a></li>
-            <li><a href="{{ path('app_my_company') }}">Mi compañia</a></li>
-            <h1>El usuario es una companyia</h1>
-        {% elseif app.user.UserTypeID.id == 3 %}
-            <h1>EL usuario es un tutor</h1>
-        {% elseif app.user.UserTypeID.id == 4 %}
-            <h1>El usuario es administrador</h1>
-        {% endif %}
-    {% else %}
-        <li><a href="{{ path('app_registration') }}">Registration</a></li>
-        <li><a href="{{ path('app_login') }}">Login</a></li>
-        <h1>El usuario es un invitado</h1>
-    {% endif %}
-</ul>
+<div class="row">
+    <div class="col offset-xl-0">
+        <nav class="navbar navbar-light navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
+            <div class="container-fluid">
+                <a class="ms-5 navbar-brand js-scroll-trigger" href="{{ path('homepage') }}">
+                    <img src="{{ asset('img/Logo.png') }}" style="width: 64px;height: 64px;">
+                </a>
+                <button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right text-uppercase fw-bold bg-primary text-white rounded" data-bs-target="#navcol-1">
+                    <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav ml-auto text-center">
+                        {% if app.user == null %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_offers') }}">Ofertas</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_companies') }}">Empresas</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_noticies')}}">Noticias</a></li>
+                        {% elseif app.user.UserTypeID.id == 1 %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_offers') }}">Ofertas</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_companies') }}">Empresas</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_noticies')}}">Noticias</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Mis candidaturas</a></li>
+                        {% elseif app.user.UserTypeId.id == 2 %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_my_offers') }}">Mis ofertas</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_my_company') }}">Mi empresa</a></li>
+                        {% elseif app.user.UserTypeID.id == 3  %}
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_offers') }}">Ofertas</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_companies') }}">Empresas</a></li>
+                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_noticies')}}">Noticias</a></li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+                {% if app.user %}
+                    <div class="col-xxl-1 offset-xxl-0">
+                        <button class="btn btn-primary btn-lg" type="button" style="border-radius: 10px;">
+                            Mi perfil
+                        </button>
+                    </div>
+
+                    <div class="col-xxl-1 offset-xxl-0">
+                        <a href="{{ path('app_logout') }}">
+                            <button class="btn btn-primary btn-lg" type="button" style="text-align: center;border-radius: 10px;">
+                                Logout
+                            </button>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="col-xxl-1 offset-xxl-0">
+                        <a href="{{ path('app_login') }}">
+                            <button class="btn btn-primary btn-lg" type="button" style="text-align: center;border-radius: 10px;">
+                                Login
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-xxl-1 offset-xxl-0">
+                        <a href="{{ path('app_registration') }}">
+                            <button class="btn btn-primary btn-lg" type="button" style="border-radius: 10px;">
+                                Registrar
+                            </button>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+</div>

@@ -6,8 +6,10 @@ use App\Entity\Company;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CompanyType extends AbstractType
@@ -33,7 +35,7 @@ class CompanyType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('url_image')
+            ->add('url_image', FileType::class)
             ->add('location')
             ->add('url_web')
             ->add('CompanyTypeID', ChoiceType::class, $options)

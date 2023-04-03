@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CreateCompanyController extends AbstractController
 {
@@ -24,7 +25,7 @@ class CreateCompanyController extends AbstractController
     }
 
     #[Route('/my-company/create', name: 'app__create_company')]
-    public function index(Security $security, Request $request): Response
+    public function index(Security $security, Request $request, SluggerInterface $slugger): Response
     {
         $user = $security->getUser();
         if($user == null || $user->getUserTypeID()->getId() != 2 || !$user->isActivate()){
@@ -39,6 +40,20 @@ class CreateCompanyController extends AbstractController
         $form = $this->createForm(CompanyType::class, $company);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+            $brochureFile =  $form->get('url_image')->getData();
+            if($brochureFile) {
+                $originalFileName = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFileName);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
+                try{
+                    $brochureFile->move(
+                        $this->getParameter('img_company'),
+                        $newFilename
+                    );
+                }catch (\Exception $e){
+                }
+                $company->setUrlImage($newFilename);
+            }
             $this->em->persist($company);
             $this->em->flush();
             $this->addUserToCompany($user);
