@@ -1,11 +1,35 @@
 <footer id="myFooter" style="height: 100px;">
     <div class="container-fluid">
         <div class="row text-center" style="height: max-content">
-            <div class="col-12 col-sm-6 col-md-3" style="height: 50px;"><img src="{{ asset('img/Logo.png') }}" style="width: 64px;height: 64px;margin-bottom: 0px;"></div>
-            <div class="col-12 col-sm-6 col-md-2" style="height: 50px;"><a href="#">Política de privacidad</a></div>
-            <div class="col-12 col-sm-6 col-md-2" style="height: 50px;"><a href="https://www.google.com/maps/place/41%C2%B021'48.3%22N+2%C2%B006'06.4%22E/@41.3634033,2.1017793,17z/data=!3m1!4b1!4m4!3m3!8m2!3d41.3634033!4d2.1017793">¿Dónde estamos?</a></div>
-            <div class="col-sm-6 col-md-2" style="height: 50px;"><a href="mailto: tccproject23@gmail.com" style="vertical-align: middle;">tccproject23@gmail.com</a></div>
-            <div class="col" style="height: 50px;"><button class="btn btn-primary" type="button" style="margin-top: 0px;">Button</button></div>
+            <div class="col-12 col-sm-6 col-md-3" style="height: 50px;">
+                <a href="{{ path('homepage') }}">
+                    <img src="{{ asset('img/Logo.png') }}" style="width: 64px;height: 64px;margin-bottom: 0px;">
+                </a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-2" style="height: 50px;">
+                <a href="#">Política de privacidad</a>
+            </div>
+            <div class="col-12 col-sm-6 col-md-2" style="height: 50px;">
+                <a href="https://www.google.com/maps/place/41%C2%B021'48.3%22N+2%C2%B006'06.4%22E/@41.3634033,2.1017793,17z/data=!3m1!4b1!4m4!3m3!8m2!3d41.3634033!4d2.1017793">¿Dónde estamos?</a>
+            </div>
+            <div class="col-sm-6 col-md-2" style="height: 50px;">
+                <a href="mailto: tccproject23@gmail.com" style="vertical-align: middle;">tccproject23@gmail.com</a>
+            </div>
+            <div class="col" style="height: 50px;">
+                <button class="btn btn-primary" type="button" style="margin-top: 0px;">Button</button>
+            </div>
         </div>
     </div>
 </footer>
+
+<script>
+    var contentHeight = document.body.scrollHeight;
+    var windowsHeight = window.innerHeight;
+
+    if(contentHeight > windowsHeight){
+        document.getElementById("myFooter").classList.remove('fixed-bottom');
+    }else{
+        document.getElementById("myFooter").classList.add('fixed-bottom');
+
+    }
+</script>

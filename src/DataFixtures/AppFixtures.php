@@ -166,7 +166,7 @@ class AppFixtures extends Fixture
         );
         $alumn->setUserTypeID($alumnType);
         $alumn->setPhone(608230454);
-        $alumn->setCVName("cv.pdf");
+        $alumn->setCVName("CV-Abocanegra.pdf");
         $alumn->setConnecoins(4);
         $alumn->setActivate(true);
 
@@ -174,9 +174,9 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         $alumn = new User();
-        $alumn->setName("Alumno1");
-        $alumn->setSurname("IFP");
-        $alumn->setEmail("alumno1@ifp.es");
+        $alumn->setName("Miguel Angel");
+        $alumn->setSurname("Goyanes Rodriguez");
+        $alumn->setEmail("mgoyanes92@gmail.com");
         $alumn->setRoles(['ROLE_USER']);
         $alumn->setPassword(
             $this->passwordHasher->hashPassword(
@@ -185,18 +185,18 @@ class AppFixtures extends Fixture
             )
         );
         $alumn->setUserTypeID($alumnType);
-        $alumn->setPhone(987654321);
-        $alumn->setCVName("cv.pdf");
+        $alumn->setPhone(689699372);
+        $alumn->setCVName("CV-Mgoyanes.pdf");
         $alumn->setConnecoins(4);
-        $alumn->setActivate(true);
+        $alumn->setActivate(false);
 
         $manager->persist($alumn);
         $manager->flush();
 
         $company = new User();
-        $company->setName("Company1");
-        $company->setSurname("IFP");
-        $company->setEmail("company1@ifp.es");
+        $company->setName("Punit");
+        $company->setSurname("Renjen");
+        $company->setEmail("prenjen@deloitte.com");
         $company->setRoles(['ROLE_USER']);
         $company->setPassword(
             $this->passwordHasher->hashPassword(
@@ -205,18 +205,38 @@ class AppFixtures extends Fixture
             )
         );
         $company->setUserTypeID($companyType);
-        $company->setPhone(987654321);
+        $company->setPhone(932804040);
         $company->setCVName(null);
         $company->setConnecoins(null);
-        $company->setActivate(true);
+        $company->setActivate(false);
+
+        $manager->persist($company);
+        $manager->flush();
+
+        $company = new User();
+        $company->setName("Carmen");
+        $company->setSurname("Jarque");
+        $company->setEmail("cjarque@ifp.es");
+        $company->setRoles(['ROLE_USER']);
+        $company->setPassword(
+            $this->passwordHasher->hashPassword(
+                $company,
+                "1234"
+            )
+        );
+        $company->setUserTypeID($companyType);
+        $company->setPhone(688165854);
+        $company->setCVName(null);
+        $company->setConnecoins(null);
+        $company->setActivate(false);
 
         $manager->persist($company);
         $manager->flush();
 
         $admin = new User();
-        $admin->setName("Admin1");
-        $admin->setSurname("IFP");
-        $admin->setEmail("admin1@ifp.es");
+        $admin->setName("Practiques");
+        $admin->setSurname("Barcelona");
+        $admin->setEmail("practicas.barcelona@ifp.es");
         $admin->setRoles(['ROLE_USER']);
         $admin->setPassword(
             $this->passwordHasher->hashPassword(
@@ -225,7 +245,7 @@ class AppFixtures extends Fixture
             )
         );
         $admin->setUserTypeID($adminType);
-        $admin->setPhone(987654321);
+        $admin->setPhone(938875134);
         $admin->setCVName(null);
         $admin->setConnecoins(null);
         $admin->setActivate(true);
@@ -237,24 +257,27 @@ class AppFixtures extends Fixture
         // Creación de compañias
         $companyType = $manager->getRepository(CompanyType::class)->find(3);
         $company = new Company();
-        $company->setName("Compañia 1");
-        $company->setDescription("Nuestra compañía de tecnología es una empresa innovadora y líder en el mercado, dedicada a proporcionar soluciones tecnológicas de vanguardia para empresas y consumidores en todo el mundo. Nos enfocamos en el desarrollo de software, hardware y servicios de tecnología de la información para satisfacer las necesidades de nuestros clientes.
+        $company->setName("Deloitte");
+        $company->setDescription(nl2br("
+¡Hola! Soy de Deloitte, una empresa global de servicios profesionales que ofrece una amplia gama de servicios a clientes en todo el mundo. Nuestro enfoque se centra en ayudar a nuestros clientes a abordar sus desafíos más complejos y a aprovechar las oportunidades de crecimiento.
 
-Nuestro equipo de expertos en tecnología está comprometido con la excelencia y la innovación, y trabaja incansablemente para crear soluciones personalizadas y eficientes para cada uno de nuestros clientes. Nos enorgullece ofrecer productos y servicios de alta calidad que mejoran la eficiencia, la productividad y la rentabilidad de nuestros clientes.
+Ofrecemos servicios de auditoría, consultoría, asesoramiento financiero, gestión de riesgos, impuestos y servicios relacionados a clientes en todo el mundo. Nuestro objetivo es ayudar a nuestros clientes a tomar decisiones informadas y a lograr sus objetivos empresariales.
 
-Nos esforzamos por mantenernos a la vanguardia de la tecnología, y estamos constantemente investigando y desarrollando nuevas soluciones para satisfacer las necesidades cambiantes del mercado. Nuestra pasión por la tecnología y nuestro compromiso con la excelencia nos han permitido establecernos como líderes en la industria de la tecnología.
+En Deloitte, trabajamos en un ambiente dinámico y desafiante, donde se valora la diversidad, la inclusión y el trabajo en equipo. Nuestros líderes son apasionados por el desarrollo de talentos y ofrecen oportunidades de crecimiento y desarrollo profesional a todos los empleados.
 
-En resumen, nuestra compañía de tecnología es una empresa innovadora y líder en el mercado, dedicada a proporcionar soluciones tecnológicas de vanguardia para empresas y consumidores en todo el mundo. Nos enorgullece ofrecer productos y servicios de alta calidad que mejoran la eficiencia, la productividad y la rentabilidad de nuestros clientes, y estamos comprometidos con la excelencia y la innovación en todo lo que hacemos.");
-        $company->setUrlImage("mi logo.jpg");
-        $company->setLocation("Av. Josep Tarradellas, 151, Hospitalet de Llobregat");
+Como empresa, Deloitte se enorgullece de su compromiso con la responsabilidad social y la sostenibilidad, y trabajamos para hacer una diferencia positiva en las comunidades donde operamos. Además, nuestra cultura de innovación y colaboración nos permite estar a la vanguardia de las tendencias y tecnologías emergentes, lo que nos permite ofrecer soluciones innovadoras y de vanguardia a nuestros clientes.
+
+En resumen, en Deloitte estamos comprometidos con ayudar a nuestros clientes a alcanzar sus objetivos empresariales y a hacer una diferencia positiva en las comunidades donde operamos. Nos enorgullece nuestra cultura de trabajo en equipo, innovación y excelencia en el servicio al cliente."));
+        $company->setUrlImage("deloitte-logo-6429d19d5b71e.jpg");
+        $company->setLocation("Avinguda Diagonal, 654, 08034 Barcelona");
         $company->setCompanyTypeID($companyType);
-        $company->setUrlWeb("www.google.es");
+        $company->setUrlWeb("https://www2.deloitte.com/");
 
         $manager->persist($company);
         $manager->flush();
 
         $companyToUser = new UserCompany();
-        $user = $manager->getRepository(User::class)->find(2);
+        $user = $manager->getRepository(User::class)->find(3);
         $company = $manager->getRepository(Company::class)->find(1);
         $companyToUser->setUser($user);
         $companyToUser->setCompany($company);
@@ -287,16 +310,38 @@ En resumen, nuestra compañía de tecnología es una empresa innovadora y líder
         //
 
         $company = $manager->getRepository(Company::class)->find(1);
-        $modality = $manager->getRepository(Modality::class)->find(1);
+        $modality = $manager->getRepository(Modality::class)->find(2);
         $offer = new Offers();
-        $offer->setTitle("Primera oferta");
-        $offer->setDescription("¡Estamos buscando un becario altamente motivado y entusiasta para unirse a nuestro equipo! Como becario, tendrás la oportunidad de aprender y desarrollar tus habilidades en un ambiente dinámico y desafiante, y de contribuir al éxito de nuestra empresa.
+        $offer->setTitle("Consultor FrontEnd");
+        $offer->setDescription("Buscamos gente con interés por la construcción de proyectos de ámbito digital, mayoritariamente orientado al desarrollo de frontales para clientes, donde la exigencia en la experiencia de usuario es uno de los factores clave de construcción.
 
-Buscamos a alguien que esté interesado en el área de [especificar el área de trabajo], y que tenga habilidades excepcionales en [especificar habilidades necesarias para el trabajo]. El candidato ideal debe ser un pensador creativo y estratégico, capaz de trabajar en equipo y de aprender rápidamente.
+Capacidad de análisis, desarrollo e implementación. Documentación y pruebas unitarias e integración con resto de módulos.
 
-Ofrecemos una experiencia de aprendizaje única, en la que tendrás la oportunidad de trabajar en proyectos emocionantes y de colaborar con profesionales experimentados en el área de [especificar el área de trabajo]. Además, ofrecemos una compensación justa y un ambiente de trabajo agradable y colaborativo.
+Requisitos:
 
-Si estás interesado en esta emocionante oportunidad de beca, envíanos tu currículum y una carta de presentación que destaque tus habilidades y experiencia en el área de [especificar el área de trabajo]. ¡Esperamos con interés recibir tu solicitud y ayudarte a desarrollar tus habilidades y experiencia en el área de [especificar el área de trabajo]!");
+    - Interés en desarrollarse en proyectos de canales digitales en equipos multi-disciplinares con roles de gestión, experiencia de usuario, negocio, products owner, etc…
+    - Valorable conocimientos en Angular o React.
+    - Valorable conocimientos en el desarrollo de aplicaciones móviles multiplataforma utilizando Ionic Framework, Capacitor y Cordova
+    - Valorable conocimientos en el uso de librerías y herramientas front-end como NPM, Typescript, SCSS, RxJS
+    - Valorable conocimientos en el uso de GIT o BitBucket como software de control de versiones.
+    - Valorable conocimientos de los estándares HTML, CSS y EcmaScript.
+    - Valorable conocimientos en el consumo de API Rest y haber participado en el diseño y definición de APIs.
+    - Valorable conocimientos de desarrollo en entornos serverless sobre AWS, Azure o GCP.
+    - Valorable conocimiento en la integración de soluciones del ecosistema digital, analítica, trazabilidad, a/b Testing, etc…
+    - Valorable conocimiento sobre herramientas satélites a los proyectos cómo AndroidStudio, SQL Developer, PostgresSQL, Oracle, PgAdmin, OpenLdap u otras similares.
+
+Ofrecemos:
+
+Incorporación en Firma líder de servicios profesionales integrados
+Desarrollo personal y profesional en un entorno exigente y multidisciplinar
+Formación sólida continuada en habilidades y conocimientos técnicos
+Excelente ambiente de trabajo
+Trabajo con equipos internacionales
+Integración en un equipo de trabajo cuyos valores comprenden la integridad, diversidad, compromiso, excelencia y generosidad
+Contamos con un plan de beneficios sociales muy interesantes. Con nuestro Programa Dwellness, queremos que te relajes y desconectes con nuestras sesiones de mindfulness y fisioterapia, además contamos con servicio médico, enfermería, seguro médico privado y descuentos en gimnasios afiliados, viajes y restaurantes, entre otras muchas cosas…
+Y además, te incorporarías en una de las empresas mejor valoradas en Forbes 2019, Actualidad Económica y Universum
+
+¡No lo dudes, ven a Deloitte Digital!");
         $offer->setModality($modality);
         $offer->setCompany($company);
         $offer->setPositions(4);

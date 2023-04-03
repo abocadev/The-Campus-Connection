@@ -3,10 +3,16 @@
 {% block title %}Hello CompanyController!{% endblock %}
 
 {% block body %}
-
+    <div class="article-list" style="background-color: transparent; margin-top:20px; ">
     {% for company in companies %}
-        <div>
-            {{ dump(company) }}
+        <div class="row articles" style="padding: 20px">
+            <div class="col-sm-6 col-md-4 item" style="padding-top:10px;padding-bottom:28px;">
+                <img class="img-fluid" style="height: 250px; border-radius: 15px" src="{{ asset('files/company_img/' ~ company.urlImage) }}">
+                <h4 class="text-start"  style="color:#fcbf49;font-family:Raleway;padding-top:24px;">{{ company.name }}</h4>
+                <p class="text-start description" style="color:#ffffff;font-size:16px;font-family:Raleway, sans-serif;margin-top:0px;">{{ company.description|nl2br|slice(0, 200)}}...<br></p>
+                <div  style="padding-top:28px;"><a class="btn btn-primary" role="button" style="font-family:Raleway, sans-serif;" href="#">Muestrame más</a></div>
+            </div>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}
