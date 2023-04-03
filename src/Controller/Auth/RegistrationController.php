@@ -40,10 +40,9 @@ class RegistrationController extends AbstractController
                 $plainTextPassword
             );
             $user->setPassword($encryptedPassword);
-            $user->setCVName('bienvenido.pdf');
             $user->setRoles(['ROLE_USER']);
             $user->setActivate(false);
-            if($user->getUserTypeID() == 1) {
+            if($user->getUserTypeID()->getId() == 1) {
                 $user->setConnecoins(4);
                 $brochurefile = $form->get('cvname')->getData();
                 if($brochurefile){

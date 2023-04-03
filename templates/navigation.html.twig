@@ -1,65 +1,76 @@
-<div class="row">
+{% if app.user %}
+    {%  if app.user.activate == 0 %}
+        <meta http-equiv="refresh" content="0; URL='{{ path('app_account_not_activated') }}'" />
+    {% endif %}
+{% endif %}
+<div class="row" style="position: sticky;top:0; z-index: 99999;">
     <div class="col offset-xl-0">
-        <nav class="navbar navbar-light navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
-            <div class="container-fluid">
-                <a class="ms-5 navbar-brand js-scroll-trigger" href="{{ path('homepage') }}">
-                    <img src="{{ asset('img/Logo.png') }}" style="width: 64px;height: 64px;">
-                </a>
-                <button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right text-uppercase fw-bold bg-primary text-white rounded" data-bs-target="#navcol-1">
-                    <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="navbar-nav ml-auto text-center">
+        <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button">
+            <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div>
+                    <a href="{{ path('homepage') }}">
+                        <img style="width: 5rem;height: 5rem;" src="{{ asset('img/Logo.png') }}">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(0,0,0);">
+                    <ul class="navbar-nav nav-right">
                         {% if app.user == null %}
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_offers') }}">Ofertas</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_companies') }}">Empresas</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_noticies')}}">Noticias</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('app_offers') }}" style="color: rgba(224,217,217,0.9);">Ofertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_companies') }}" style="color: rgba(224,217,217,0.9);">Empresas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_noticies')}}" style="color: rgba(224,217,217,0.9);">Noticias</a>
+                            </li>
                         {% elseif app.user.UserTypeID.id == 1 %}
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_offers') }}">Ofertas</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_companies') }}">Empresas</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_noticies')}}">Noticias</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">Mis candidaturas</a></li>
-                        {% elseif app.user.UserTypeId.id == 2 %}
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_my_offers') }}">Mis ofertas</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_my_company') }}">Mi empresa</a></li>
-                        {% elseif app.user.UserTypeID.id == 3  %}
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_offers') }}">Ofertas</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_companies') }}">Empresas</a></li>
-                            <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ path('app_noticies')}}">Noticias</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link active" style="color: rgba(224,217,217,0.9);" href="{{ path('app_offers') }}">Ofertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: rgba(224,217,217,0.9);" href="{{ path('app_companies') }}">Empresas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: rgba(224,217,217,0.9);" href="{{ path('app_noticies')}}">Noticias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color: rgba(224,217,217,0.9);">Mis Candidaturas</a>
+                            </li>
+                        {% elseif app.user.UserTypeID.id == 2 %}
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: rgba(224,217,217,0.9);" href="{{ path('app_my_offers')}}">Mis ofertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: rgba(224,217,217,0.9);" href="{{ path('app_my_company')}}">Mi empresa</a>
+                            </li>
+                        {% elseif app.user.UserTypeID.id == 3 %}
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ path('app_offers') }}" style="color: rgba(224,217,217,0.9);">Ofertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_companies') }}" style="color: rgba(224,217,217,0.9);">Empresas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_noticies')}}" style="color: rgba(224,217,217,0.9);">Noticias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" style="color: rgba(224,217,217,0.9);">Todos los usuarios</a>
+                            </li>
                         {% endif %}
+
                     </ul>
 
+                    <p class="ms-auto navbar-text actions">
+                        {% if app.user %}
+                            <a class="btn btn-light action-button" role="button" href="#" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Mi perfil</a>
+                            <a class="login" href="{{ path('app_logout', {'activate': 'false'}) }}" style="color: red;">Log out</a>
+                        {% else %}
+                            <a class="login" href="{{ path('app_login') }}" style="color: rgba(224,217,217,0.9);">Log In</a>
+                            <a class="btn btn-light action-button" role="button" href="{{ path('app_registration') }}" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a>
+                        {% endif %}
+                    </p>
                 </div>
-                {% if app.user %}
-                    <div class="col-xxl-1 offset-xxl-0">
-                        <button class="btn btn-primary btn-lg" type="button" style="border-radius: 10px;">
-                            Mi perfil
-                        </button>
-                    </div>
-
-                    <div class="col-xxl-1 offset-xxl-0">
-                        <a href="{{ path('app_logout') }}">
-                            <button class="btn btn-primary btn-lg" type="button" style="text-align: center;border-radius: 10px;">
-                                Logout
-                            </button>
-                        </a>
-                    </div>
-                {% else %}
-                    <div class="col-xxl-1 offset-xxl-0">
-                        <a href="{{ path('app_login') }}">
-                            <button class="btn btn-primary btn-lg" type="button" style="text-align: center;border-radius: 10px;">
-                                Login
-                            </button>
-                        </a>
-                    </div>
-                    <div class="col-xxl-1 offset-xxl-0">
-                        <a href="{{ path('app_registration') }}">
-                            <button class="btn btn-primary btn-lg" type="button" style="border-radius: 10px;">
-                                Registrar
-                            </button>
-                        </a>
-                    </div>
-                {% endif %}
             </div>
         </nav>
     </div>

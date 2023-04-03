@@ -154,6 +154,26 @@ class AppFixtures extends Fixture
         $adminType = $manager->getRepository(UserType::class)->find(3);
 
         $alumn = new User();
+        $alumn->setName("Albert");
+        $alumn->setSurname("Bocanegra Barreiro");
+        $alumn->setEmail("albert.bocanegra2003@gmail.com");
+        $alumn->setRoles(['ROLE_USER']);
+        $alumn->setPassword(
+            $this->passwordHasher->hashPassword(
+                $alumn,
+                "1234"
+            )
+        );
+        $alumn->setUserTypeID($alumnType);
+        $alumn->setPhone(608230454);
+        $alumn->setCVName("cv.pdf");
+        $alumn->setConnecoins(4);
+        $alumn->setActivate(true);
+
+        $manager->persist($alumn);
+        $manager->flush();
+
+        $alumn = new User();
         $alumn->setName("Alumno1");
         $alumn->setSurname("IFP");
         $alumn->setEmail("alumno1@ifp.es");

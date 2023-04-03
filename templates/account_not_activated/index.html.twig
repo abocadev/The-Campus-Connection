@@ -1,0 +1,5 @@
+{%  if app.user.activate == 0 %}
+    <meta http-equiv="refresh" content="5; URL='{{ path('app_logout') }}'" />
+{% endif %}
+
+<h1>Your account is not activated</h1>
