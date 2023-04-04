@@ -3,7 +3,7 @@ function add_req() {
   var label = document.getElementById("req_text");
   var selectedOption = dropdown.options[dropdown.selectedIndex].text;
   if (label.innerHTML.indexOf(selectedOption) === -1) {
-      label.innerHTML += "       " + selectedOption;
+      label.innerHTML += selectedOption + ";        ";
   } else {
       alert("Elemento ya añadido")
   }

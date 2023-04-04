@@ -27,12 +27,6 @@
   box-shadow: 0 0 0 0 #048f83!important;
 }
 
-.btn-primary:hover {
-  color: #fff;
-  background-color: #016090;
-  border-color: #016090;
-}
-
 .btn.btn-primary {
   background-color: #048f83!important;
   border-color: #048f83!important;
