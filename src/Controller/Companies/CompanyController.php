@@ -31,4 +31,15 @@ class CompanyController extends AbstractController
             'companies' => $companies
         ]);
     }
+
+    #[Route('/companies/{id}', name: 'app_companie_individual')]
+    public function individual($id): Response
+    {
+        $numCompanies =  sizeof($this->em->getRepository(Company::class)->findAll());
+        if($numCompanies < $id) return $this->redirectToRoute('app_companies');
+        $company = $this->em->getRepository(Company::class)->find($id);
+        return $this->render('company/individual.html.twig', [
+            'company' => $company
+        ]);
+    }
 }

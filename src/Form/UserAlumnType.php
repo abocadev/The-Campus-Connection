@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use App\Entity\UserType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -14,8 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\Exception\TransformationFailedException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserAlumnType extends AbstractType
@@ -29,10 +30,6 @@ class UserAlumnType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $array = $this->em->getRepository(UserType::class)->findAll();
-        $options = [
-            'choices' => $array,
-            'choice_label' => 'name'
-        ];
 
         $builder
             ->add('name', TextType::class, [
@@ -72,8 +69,16 @@ class UserAlumnType extends AbstractType
             ])
             ->add('cvname', FileType::class, [
                 'required' => false,
+                'data_class' => null,
                 'attr' => [
                     'class' => 'form-control',
+                ],
+            ])
+            ->add('img_url', FileType::class, [
+                'required' => false,
+                'data_class' => null,
+                'attr' => [
+                    'class' => 'form-control'
                 ]
             ])
             ->add('UserTypeID', ChoiceType::class, [
@@ -93,7 +98,7 @@ class UserAlumnType extends AbstractType
                     'style' => 'display:block; margin:0 auto;'
                 ]
             ])
-        ;
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

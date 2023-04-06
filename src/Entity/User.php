@@ -49,6 +49,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $Activate = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $img_url = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -219,6 +222,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setConnecoins(?int $connecoins): void
     {
         $this->connecoins = $connecoins;
+    }
+
+    public function getImgUrl(): ?string
+    {
+        return $this->img_url;
+    }
+
+    public function setImgUrl(?string $img_url): self
+    {
+        $this->img_url = $img_url;
+
+        return $this;
     }
 
 

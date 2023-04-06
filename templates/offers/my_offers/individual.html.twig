@@ -9,6 +9,7 @@
       {% for x in candidates %}
          {% if x %}
             {{ dump(x.user.name) }}
+            <a download="{{ x.user.name }}-{{ x.user.surname }}-CV" href="{{ asset('files/cv/') ~ x.user.cvname }}">Descargar el CV</a>
          {% endif %}
       {% endfor %}
 {% endblock %}

@@ -8,8 +8,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CompanyType extends AbstractType
@@ -33,9 +34,11 @@ class CompanyType extends AbstractType
             'choice_label' => 'name'
         ];
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('url_image', FileType::class)
+            ->add('name', TextType::class)
+            ->add('description', TextareaType::class)
+            ->add('url_image', FileType::class, [
+                'data_class' => null
+            ])
             ->add('location')
             ->add('url_web')
             ->add('CompanyTypeID', ChoiceType::class, $options)

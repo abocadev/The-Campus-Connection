@@ -62,6 +62,24 @@ class RegistrationController extends AbstractController
                 $user->setConnecoins(null);
                 $user->setCVName(null);
             }
+
+            $fileImg = $form->get('img_url')->getData();
+            if($fileImg){
+                $originalFileName = pathinfo($fileImg->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFileName);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$fileImg->guessExtension();
+                try{
+                    $fileImg->move(
+                        $this->getParameter('img_users'),
+                        $newFilename
+                    );
+                }catch (\Exception $e){
+                }
+                $user->setImgUrl($newFilename);
+            }else{
+                $user->setImgUrl(null);
+            }
+
             $this->em->persist($user);
             $this->em->flush();
             return $this->redirectToRoute('homepage');

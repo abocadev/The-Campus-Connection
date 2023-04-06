@@ -40,6 +40,7 @@ class CreateOffersController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $company = $this->em->getRepository(UserCompany::class)->haveCompany($user->getId());
             $company = $company->getCompany();
+            $offer->setActivated(true);
             $offer->setActivatedByAdmin(false);
             $offer->setCreationDate(new \DateTime());
             $offer->setUpdatedDate(new \DateTime());

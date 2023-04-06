@@ -39,6 +39,13 @@ class UserToOfferRepository extends ServiceEntityRepository
         }
     }
 
+    public function getMyCandidances($user)
+    {
+        return $this->getEntityManager()->createQuery(
+            'SELECT o FROM App\Entity\UserToOffer o WHERE o.User=:user'
+        )->setParameter('user', $user)->getResult();
+    }
+
 //    /**
 //     * @return UserToOffer[] Returns an array of UserToOffer objects
 //     */

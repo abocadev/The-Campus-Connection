@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CreateOffersController!{% endblock %}
+
+{% block body %}
+    <section style="margin-top: 1rem;margin-bottom: 1rem;">
+        <h1 class="text-center text-capitalize" style="color: rgb(255,255,255);margin-top: 1rem;">Editar la oferta</h1>
+        <div class="container">
+            {{ form_start(form)}}
+                <div class="form-group mb-3">
+                    <div class="row">
+                        <div class="col-sm-7 col-md-8 col-lg-8 col-xl-7 col-xxl-9">
+                            <p style="color: #ffffff;"><strong>Nombre de la oferta</strong>&nbsp;</p>
+                            {{ form_widget(form.title) }}
+                        </div>
+                        <div class="col-sm-5 col-md-4 col-lg-4 col-xl-5 col-xxl-3" style="color: #ffffff;">
+                            <p style="color: #ffffff;"><strong>Vacantes</strong>&nbsp;</p>
+                            {{ form_widget(form.Positions) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3" style="color: #ffffff;">
+                    <div class="row" style="color: #ffffff;">
+                        <div class="col" style="color: #ffffff;">
+                            <p style="color: #ffffff;"><strong>Descripción de la oferta</strong>&nbsp;
+                                {{ form_widget(form.description) }}
+{#                                <textarea class="form-control"></textarea>#}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3" style="color: #ffffff;">
+                    <div class="row">
+                        <div class="col-sm-7 col-md-8 col-lg-8 col-xl-7 col-xxl-6">
+                            <p style="color: #ffffff;"><strong>Categoría</strong>&nbsp;</p>
+                            {{ form_widget(form.Category) }}
+                        </div>
+                        <div class="col-sm-5 col-md-4 col-lg-4 col-xl-5 col-xxl-6" style="color: #ffffff;">
+                            <p style="color: #ffffff;"><strong>Localidad</strong></p>
+                            {{ form_widget(form.Locality)}}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mb-3" style="color: #ffffff;">
+                    <div class="row" style="color: #ffffff;">
+                        <div class="col" style="color: #ffffff;">
+                            <p style="color: #ffffff;">Horas semanales</p>
+                            {{form_widget(form.WeeklyHours)}}
+
+                        </div>
+                        <div class="col" style="color: #ffffff;">
+                            <p style="color: #ffffff;">Modalidad</p>
+                            {{ form_widget(form.Modality)}}
+                            <label class="form-label" id="req_text" style="margin-top: 3rem;font-size: 0.9rem;"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="justify-content-center d-flex form-group mb-3">
+                    <div id="submit-btn">
+                        <div class="row">
+                            {{ form_widget(form.submit) }}
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

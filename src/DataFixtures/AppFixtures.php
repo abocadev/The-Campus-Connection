@@ -2,13 +2,16 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\CategoriesOffers;
 use App\Entity\Company;
 use App\Entity\CompanyType;
+use App\Entity\LocalitiesOffers;
 use App\Entity\Modality;
 use App\Entity\Offers;
 use App\Entity\User;
 use App\Entity\UserCompany;
 use App\Entity\UserType;
+use App\Entity\WeeklyHoursOffers;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -128,6 +131,253 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         //
+        // Creacion de las categorias de informatica:
+        //
+
+        $category = new CategoriesOffers();
+        $category->setName("Desarrollo de Software");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Administracion de sistemas");
+        $manager->persist($category);
+        $manager->flush();
+
+
+        $category = new CategoriesOffers();
+        $category->setName("Seguridad informatica");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Analisis de datos");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Diseño web");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Inteligencia Artificial");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Realidad Virtual y Aumentada");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Ciberseguridad");
+        $manager->persist($category);
+        $manager->flush();
+
+
+        $category = new CategoriesOffers();
+        $category->setName("Blockchain");
+        $manager->persist($category);
+        $manager->flush();
+
+
+        $category = new CategoriesOffers();
+        $category->setName("Cloud computing");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Desarrollo movil");
+        $manager->persist($category);
+        $manager->flush();
+
+
+        $category = new CategoriesOffers();
+        $category->setName("Bussiness Intelligence");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Robotica");
+        $manager->persist($category);
+        $manager->flush();
+
+        $category = new CategoriesOffers();
+        $category->setName("Sistemas embebidos");
+        $manager->persist($category);
+        $manager->flush();
+
+        //
+        // Creacion de las localidades de las ofertas de trabajo
+        //
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Badalona");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Barcelona");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Blanes");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Cerdanyola del Valles");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Castelldefels");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Cornella de Llobregat");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("El Prat de Llobregat");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Figueres");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Girona");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Granollers");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Hospitalet de llobregat");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Igualada");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Lleida");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Manresa");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Mataro");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Mollet del Valles");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Reus");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Rubi");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Sabadell");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Santa Coloma de Gramanet");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Sant Adria de Besos");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Sant Boi de Llobregat");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Sant Cugat del Valles");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Sant Feliu de Llobregat");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Sitges");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Tarragona");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Terrassa");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Vic");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Vilafranca del penedes");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $locaties = new LocalitiesOffers();
+        $locaties->setName("Vilanova i la Geltru");
+        $manager->persist($locaties);
+        $manager->flush();
+
+        $hour = new WeeklyHoursOffers();
+        $hour->setName("< 12");
+        $manager->persist($hour);
+        $manager->flush();
+
+        $hour = new WeeklyHoursOffers();
+        $hour->setName("12 - 16");
+        $manager->persist($hour);
+        $manager->flush();
+
+        $hour = new WeeklyHoursOffers();
+        $hour->setName("16 - 20");
+        $manager->persist($hour);
+        $manager->flush();
+
+        //
         // Creación de los tipos de usuarios
         //
 
@@ -169,6 +419,7 @@ class AppFixtures extends Fixture
         $alumn->setCVName("CV-Abocanegra.pdf");
         $alumn->setConnecoins(4);
         $alumn->setActivate(true);
+        $alumn->setImgUrl("img_albert_bocanegra_barreiro.png");
 
         $manager->persist($alumn);
         $manager->flush();
@@ -189,9 +440,11 @@ class AppFixtures extends Fixture
         $alumn->setCVName("CV-Mgoyanes.pdf");
         $alumn->setConnecoins(4);
         $alumn->setActivate(false);
+        $alumn->setImgUrl("img_miguel_angel_goyanes.png");
 
         $manager->persist($alumn);
         $manager->flush();
+
 
         $company = new User();
         $company->setName("Punit");
@@ -209,6 +462,7 @@ class AppFixtures extends Fixture
         $company->setCVName(null);
         $company->setConnecoins(null);
         $company->setActivate(false);
+        $company->setImgUrl(null);
 
         $manager->persist($company);
         $manager->flush();
@@ -229,6 +483,7 @@ class AppFixtures extends Fixture
         $company->setCVName(null);
         $company->setConnecoins(null);
         $company->setActivate(false);
+        $company->setImgUrl(null);
 
         $manager->persist($company);
         $manager->flush();
@@ -249,6 +504,7 @@ class AppFixtures extends Fixture
         $admin->setCVName(null);
         $admin->setConnecoins(null);
         $admin->setActivate(true);
+        $admin->setImgUrl(null);
 
         $manager->persist($admin);
         $manager->flush();
@@ -258,8 +514,7 @@ class AppFixtures extends Fixture
         $companyType = $manager->getRepository(CompanyType::class)->find(3);
         $company = new Company();
         $company->setName("Deloitte");
-        $company->setDescription(nl2br("
-¡Hola! Soy de Deloitte, una empresa global de servicios profesionales que ofrece una amplia gama de servicios a clientes en todo el mundo. Nuestro enfoque se centra en ayudar a nuestros clientes a abordar sus desafíos más complejos y a aprovechar las oportunidades de crecimiento.
+        $company->setDescription("¡Hola! Soy de Deloitte, una empresa global de servicios profesionales que ofrece una amplia gama de servicios a clientes en todo el mundo. Nuestro enfoque se centra en ayudar a nuestros clientes a abordar sus desafíos más complejos y a aprovechar las oportunidades de crecimiento.
 
 Ofrecemos servicios de auditoría, consultoría, asesoramiento financiero, gestión de riesgos, impuestos y servicios relacionados a clientes en todo el mundo. Nuestro objetivo es ayudar a nuestros clientes a tomar decisiones informadas y a lograr sus objetivos empresariales.
 
@@ -267,7 +522,7 @@ En Deloitte, trabajamos en un ambiente dinámico y desafiante, donde se valora l
 
 Como empresa, Deloitte se enorgullece de su compromiso con la responsabilidad social y la sostenibilidad, y trabajamos para hacer una diferencia positiva en las comunidades donde operamos. Además, nuestra cultura de innovación y colaboración nos permite estar a la vanguardia de las tendencias y tecnologías emergentes, lo que nos permite ofrecer soluciones innovadoras y de vanguardia a nuestros clientes.
 
-En resumen, en Deloitte estamos comprometidos con ayudar a nuestros clientes a alcanzar sus objetivos empresariales y a hacer una diferencia positiva en las comunidades donde operamos. Nos enorgullece nuestra cultura de trabajo en equipo, innovación y excelencia en el servicio al cliente."));
+En resumen, en Deloitte estamos comprometidos con ayudar a nuestros clientes a alcanzar sus objetivos empresariales y a hacer una diferencia positiva en las comunidades donde operamos. Nos enorgullece nuestra cultura de trabajo en equipo, innovación y excelencia en el servicio al cliente.");
         $company->setUrlImage("deloitte-logo-6429d19d5b71e.jpg");
         $company->setLocation("Avinguda Diagonal, 654, 08034 Barcelona");
         $company->setCompanyTypeID($companyType);
@@ -311,6 +566,9 @@ En resumen, en Deloitte estamos comprometidos con ayudar a nuestros clientes a a
 
         $company = $manager->getRepository(Company::class)->find(1);
         $modality = $manager->getRepository(Modality::class)->find(2);
+        $location = $manager->getRepository(LocalitiesOffers::class)->find(22);
+        $category = $manager->getRepository(CategoriesOffers::class)->find(1);
+        $hours = $manager->getRepository(WeeklyHoursOffers::class)->find(2);
         $offer = new Offers();
         $offer->setTitle("Consultor FrontEnd");
         $offer->setDescription("Buscamos gente con interés por la construcción de proyectos de ámbito digital, mayoritariamente orientado al desarrollo de frontales para clientes, donde la exigencia en la experiencia de usuario es uno de los factores clave de construcción.
@@ -342,14 +600,16 @@ Contamos con un plan de beneficios sociales muy interesantes. Con nuestro Progra
 Y además, te incorporarías en una de las empresas mejor valoradas en Forbes 2019, Actualidad Económica y Universum
 
 ¡No lo dudes, ven a Deloitte Digital!");
-        $offer->setModality($modality);
-        $offer->setCompany($company);
         $offer->setPositions(4);
-        $offer->setLocation(null);
         $offer->setActivated(true);
         $offer->setActivatedByAdmin(false);
         $offer->setCreationDate(new \DateTime());
         $offer->setUpdatedDate(new \DateTime());
+        $offer->setCompany($company);
+        $offer->setModality($modality);
+        $offer->setCategory($category);
+        $offer->setLocality($location);
+        $offer->setWeeklyHours($hours);
         $manager->persist($offer);
         $manager->flush();
     }

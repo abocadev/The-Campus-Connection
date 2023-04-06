@@ -39,7 +39,7 @@
                                 <a class="nav-link" style="color: rgba(224,217,217,0.9);" href="{{ path('app_noticies')}}">Noticias</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" style="color: rgba(224,217,217,0.9);">Mis Candidaturas</a>
+                                <a class="nav-link" href="{{ path('app_my_candidacies') }}" style="color: rgba(224,217,217,0.9);">Mis Candidaturas</a>
                             </li>
                         {% elseif app.user.UserTypeID.id == 2 %}
                             <li class="nav-item">
@@ -67,7 +67,7 @@
 
                     <p class="ms-auto navbar-text actions">
                         {% if app.user %}
-                            <a class="btn btn-light action-button" role="button" href="#" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Mi perfil</a>
+                            <a class="btn btn-light action-button" role="button" href="{{ path('app_my_perfil') }}" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Mi perfil</a>
                             <a class="login" href="{{ path('app_logout', {'activate': 'false'}) }}" style="color: red;">Log out</a>
                         {% else %}
                             <a class="login" href="{{ path('app_login') }}" style="color: rgba(224,217,217,0.9);">Log In</a>

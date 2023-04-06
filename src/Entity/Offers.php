@@ -31,8 +31,6 @@ class Offers
     #[ORM\Column]
     private ?int $Positions = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Location = null;
 
     #[ORM\Column]
     private ?bool $Activated = null;
@@ -45,6 +43,18 @@ class Offers
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $UpdatedDate = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?CategoriesOffers $Category = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?LocalitiesOffers $Locality = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?WeeklyHoursOffers $WeeklyHours = null;
 
     public function getId(): ?int
     {
@@ -111,18 +121,6 @@ class Offers
         return $this;
     }
 
-    public function getLocation(): ?string
-    {
-        return $this->Location;
-    }
-
-    public function setLocation(?string $Location): self
-    {
-        $this->Location = $Location;
-
-        return $this;
-    }
-
     public function isActivated(): ?bool
     {
         return $this->Activated;
@@ -167,6 +165,42 @@ class Offers
     public function setUpdatedDate(\DateTimeInterface $UpdatedDate): self
     {
         $this->UpdatedDate = $UpdatedDate;
+
+        return $this;
+    }
+
+    public function getCategory(): ?CategoriesOffers
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(?CategoriesOffers $Category): self
+    {
+        $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getLocality(): ?LocalitiesOffers
+    {
+        return $this->Locality;
+    }
+
+    public function setLocality(?LocalitiesOffers $Locality): self
+    {
+        $this->Locality = $Locality;
+
+        return $this;
+    }
+
+    public function getWeeklyHours(): ?WeeklyHoursOffers
+    {
+        return $this->WeeklyHours;
+    }
+
+    public function setWeeklyHours(?WeeklyHoursOffers $WeeklyHours): self
+    {
+        $this->WeeklyHours = $WeeklyHours;
 
         return $this;
     }

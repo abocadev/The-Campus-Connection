@@ -3,18 +3,11 @@
 {% block title %}Hello NoticiesController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {% for noticia in noticias %}
+        <h1 style="color: white">{{ noticia.title }}</h1>
+        {{ dump(noticia) }}
+        <a href="{{ noticia.url }}">Ir a la noticia</a>
+    {% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/The-Campus-Connection/src/Controller/NoticiesController.php'|file_link(0) }}">src/Controller/NoticiesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/The-Campus-Connection/templates/noticies/index.html.twig'|file_link(0) }}">templates/noticies/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
