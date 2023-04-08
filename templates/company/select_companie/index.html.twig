@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Selecciona tu empresa{% endblock %}
+
+{% block body %}
+    <section style="margin-top: 1rem;margin-bottom: 1rem;">
+        <h1 class="text-center text-capitalize" style="color: rgb(255,255,255);margin-top: 1rem;">Selecciona tu empresa</h1>
+        <div class="container" style="background-color:#232325; border-radius: 30px; padding-top:10px; padding-bottom:10px;">
+            {{ form_start(form) }}
+            <div>
+                <div class="row">
+                    <div class="col-lg-8 col-xl-8 col-xxl-8 offset-lg-2 offset-xl-2 offset-xxl-2"
+                         style="color: #ffffff; margin-bottom:10px">
+                        <p style="color: #ffffff;">
+                            <strong>Descripción de la empresa</strong>&nbsp
+                            {{ form_widget(form.Company) }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="justify-content-center d-flex form-group mb-3">
+                <div id="submit-btn">
+                    <div class="row">
+                        {{ form_widget(form.submit) }}
+                    </div>
+                </div>
+                <a href="{{ path('app__create_company') }}">Crear una empresa</a>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+    </section>
+{% endblock %}

@@ -439,7 +439,7 @@ class AppFixtures extends Fixture
         $alumn->setPhone(689699372);
         $alumn->setCVName("CV-Mgoyanes.pdf");
         $alumn->setConnecoins(4);
-        $alumn->setActivate(false);
+        $alumn->setActivate(true);
         $alumn->setImgUrl("img_miguel_angel_goyanes.png");
 
         $manager->persist($alumn);
@@ -461,7 +461,7 @@ class AppFixtures extends Fixture
         $company->setPhone(932804040);
         $company->setCVName(null);
         $company->setConnecoins(null);
-        $company->setActivate(false);
+        $company->setActivate(true);
         $company->setImgUrl(null);
 
         $manager->persist($company);
@@ -482,7 +482,7 @@ class AppFixtures extends Fixture
         $company->setPhone(688165854);
         $company->setCVName(null);
         $company->setConnecoins(null);
-        $company->setActivate(false);
+        $company->setActivate(true);
         $company->setImgUrl(null);
 
         $manager->persist($company);

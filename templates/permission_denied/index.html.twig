@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PermissionDeniedController!{% endblock %}
+{% block title %} ¡PERMISO DENEGADO! {% endblock %}
 
 {% block body %}
-    <h1>Permission denied</h1>
+    <h1 class="text-white text-center">Permission denied</h1>
+    <meta http-equiv="refresh" content="5; URL='{{ path('homepage') }}'" />
+
 {% endblock %}

@@ -1,1 +1,50 @@
-{{ dump(company) }}
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ company.name }}{% endblock %}
+
+{% block body %}
+    <div class="container" style="background-color: #232325; color: #fff; margin-top: 20px; margin-bottom:70px; max-width: 800px; padding: 30px; border-radius: 30px;">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('files/company_img/' ~ company.urlImage) }}" alt="Oferta de empleo" style="max-width: 100%;">
+            </div>
+
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 id="nombre">{{ company.name }}</h3>
+                        <p id="localidad">{{ company.location }}</p>
+                        <p id="categoria">{{ company.companyTypeID.name }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        {% if 'https://' in company.urlWeb %}
+                            <a href="{{ company.urlWeb }}" target="_blank">
+                                <button class="btn btn-primary btn-lg btn-block mt-3 rounded" style="white-space: normal;">
+                                    Visitar la web
+                                </button>
+                            </a>
+                        {% elseif 'http://' in company.urlWeb %}
+                            <a href="{{ company.urlWeb }}" target="_blank">
+                                <button class="btn btn-primary btn-lg btn-block mt-3 rounded" style="white-space: normal;">
+                                    Visitar la web
+                                </button>
+                            </a>
+                        {% else %}
+                            <a href="http://{{ company.urlWeb }}" target="_blank">
+                                <button class="btn btn-primary btn-lg btn-block mt-3 rounded" style="white-space: normal;">
+                                    Visitar la web
+                                </button>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12" id="desc_div">
+                <h4>Descripción de la empresa</h4>
+                {{ company.description|nl2br }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

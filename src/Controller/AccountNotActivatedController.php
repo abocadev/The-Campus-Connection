@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AccountNotActivatedController extends AbstractController
 {
-    #[Route('/account/not/activated', name: 'app_account_not_activated')]
+    #[Route('/account-not-activated', name: 'app_account_not_activated')]
     public function index(): Response
     {
         return $this->render('account_not_activated/index.html.twig', [

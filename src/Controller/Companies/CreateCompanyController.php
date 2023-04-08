@@ -24,7 +24,7 @@ class CreateCompanyController extends AbstractController
         $this->em = $em;
     }
 
-    #[Route('/my-company/create', name: 'app__create_company')]
+    #[Route('/create-company', name: 'app__create_company')]
     public function index(Security $security, Request $request, SluggerInterface $slugger): Response
     {
         $user = $security->getUser();

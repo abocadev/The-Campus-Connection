@@ -1,6 +1,6 @@
-<footer id="myFooter" style="height: 100px;">
+<footer id="myFooter" class="align-items-center" style="height: max-content; padding: 5px 0">
     <div class="container-fluid">
-        <div class="row text-center" style="height: max-content">
+        <div class="row text-center " style="height: max-content">
             <div class="col-12 col-sm-6 col-md-3" style="height: 50px;">
                 <a href="{{ path('homepage') }}">
                     <img src="{{ asset('img/Logo.png') }}" style="width: 64px;height: 64px;margin-bottom: 0px;">
@@ -23,13 +23,15 @@
 </footer>
 
 <script>
-    var contentHeight = document.body.scrollHeight;
-    var windowsHeight = window.innerHeight;
-
-    if(contentHeight > windowsHeight){
-        document.getElementById("myFooter").classList.remove('fixed-bottom');
-    }else{
-        document.getElementById("myFooter").classList.add('fixed-bottom');
-
+    function change() {
+        var contentHeight = document.body.scrollHeight;
+        var windowsHeight = window.innerHeight;
+        if(contentHeight > windowsHeight){
+            document.getElementById("myFooter").classList.remove('fixed-bottom');
+        }else{
+            document.getElementById("myFooter").classList.add('fixed-bottom');
+        }
     }
+
+    setInterval(change, 10);
 </script>

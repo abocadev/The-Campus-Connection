@@ -52,7 +52,7 @@ class MyOffersController extends AbstractController
 
         $company = $this->em->getRepository(UserCompany::class)->haveCompany($user->getId());
         $offer = $this->em->getRepository(Offers::class)->find($id);
-        if($offer == null || $offer->getCompany()->getId() != $company->getId()){
+        if($offer == null || $company == null|| $offer->getCompany() !=  $company->getCompany()){
             return $this->redirectToRoute('app_my_offers');
         }
 
@@ -83,7 +83,7 @@ class MyOffersController extends AbstractController
         }
         $company = $this->em->getRepository(UserCompany::class)->haveCompany($user->getId());
         $offer = $this->em->getRepository(Offers::class)->find($id);
-        if($offer == null || $offer->getCompany()->getId() != $company->getId()){
+        if($offer == null || $offer->getCompany() !=  $company->getCompany()){
             return $this->redirectToRoute('app_my_offers');
         }
 
@@ -96,7 +96,8 @@ class MyOffersController extends AbstractController
         }
 
         return $this->render('offers/edit_offers/index.html.twig', [
-           'form' => $form
+           'form' => $form,
+            'offer' => $offer
         ]);
     }
 
@@ -110,7 +111,7 @@ class MyOffersController extends AbstractController
         }
         $company = $this->em->getRepository(UserCompany::class)->haveCompany($user->getId());
         $offer = $this->em->getRepository(Offers::class)->find($id);
-        if($offer == null || $offer->getCompany()->getId() != $company->getId()){
+        if($offer == null || $offer->getCompany() !=  $company->getCompany()){
             return $this->redirectToRoute('app_my_offers');
         }
 

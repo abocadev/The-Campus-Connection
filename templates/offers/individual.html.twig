@@ -3,21 +3,64 @@
 {% block title %}{{ offer.title }}!{% endblock %}
 
 {% block body %}
-   
-   {{ dump(offer) }}
-   
-   {% if app.user %}
-      {% if apuntado == 1 %}
-         <p>Ya te has apuntado a esta oferta</p>
-      {% else %}
-         {% if app.user.connecoins == 0 %}
-            <p>No tienes los suficientes connecoins</p>
-         {% elseif app.user.UserTypeID.id == 1 %}
-            {{ form(form) }}
-         {% endif %}
-      {% endif %}
-   {% else %}
-      <p>No te puedes apuntar a la oferta, porque no has iniciado sesion</p>
-      <a href="{{ path('app_login') }}"></a>
-   {% endif %}
+    {% if offer.activatedByAdmin or app.user.UserTypeID.id == 3 %}
+        <h1 style="text-align: center; margin-top:10px" class="text-white">{{ offer.title }}</h1>
+        <div class="container"
+             style="background-color: #232325; color: #fff; margin-top: 20px; margin-bottom:70px; max-width: 800px; padding: 30px; border-radius: 10px;">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="{{ asset('files/company_img/' ~ offer.company.urlImage) }}" alt="Oferta de empleo"
+                         style="width: 15rem;">
+                    {% if app.user %}
+                        {% if apuntado == 1 %}
+                            <p>Ya te has apuntado a esta oferta</p>
+                        {% elseif app.user.connecoins == 0 and app.user.UserTypeID.id == 1 %}
+                            <p>No tienes los suficientes connecoins</p>
+                        {% elseif app.user.UserTypeID.id == 1 %}
+                            {{ form(form) }}
+                        {% elseif app.user.UserTypeID.id == 3 %}
+                            <div class="mt-5">
+                                {% if offer.activatedByAdmin %}
+                                    <form method="post" action="{{ path('app_desactivate_offer', {'id': offer.id }) }}">
+                                        <input type="submit" value="Desactivar oferta" class="btn" style="border-radius: 10px; background: red; color: white;">
+                                    </form>
+                                {% else %}
+                                    <form method="post" action="{{ path('app_activate_offer', {'id': offer.id }) }}">
+                                        <input type="submit" value="Activar oferta" class="btn"
+                                               style="border-radius: 10px; background: green; color: white;">
+                                    </form>
+                            {% endif %}
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <p class="mt-2 text-white">No tienes permisos para apuntarte a esta oferta</p>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-white">{{ offer.company.name }}</h3>
+                            <p>Fecha de creación de la oferta: {{ offer.creationDate|date('Y-m-d') }}</p>
+                            <p>Fecha de modificación de la oferta: {{ offer.updatedDate|date('Y-m-d') }}</p>
+
+                            <h3>Información del empleo</h3>
+                            <p>{{ offer.weeklyHours.name }} horas semanales</p>
+                            <p>{{ offer.locality.name }}</p>
+                            <p>Modalidad de trabajo: {{ offer.modality.name }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <h4>Descripción de la oferta</h4>
+                    {{ offer.description|nl2br }}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <meta http-equiv="refresh" content="5; URL='{{ path('app_offers') }}'"/>
+    {% endif %}
+
 {% endblock %}

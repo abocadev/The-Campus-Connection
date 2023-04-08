@@ -14,115 +14,155 @@
 </head>
 
 <body style="background-color: #2C2C2E;/*margin-bottom: 100px;*/">
-    <div class="row" style="position: sticky;top:0; z-index: 99999;">
-        <div class="col offset-xl-0">
-            <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button">
-                <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                    <div><img style="width: 5rem;height: 5rem;" src="assets/img/Logo.png"></div>
-                    <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
-                        <ul class="navbar-nav nav-right">
-                            <li class="nav-item"><a class="nav-link active" href="index.html" style="color: rgba(224,217,217,0.9);">Tus Ofertas</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html" style="color: rgba(224,217,217,0.9);">Candidaturas</a></li>
-                            <li class="nav-item"><a class="nav-link" href="faq.html" style="color: rgba(224,217,217,0.9);">Noticias</a></li>
-                        </ul>
-                        <p class="ms-auto navbar-text actions"><a class="login" href="login.html" style="color: rgba(224,217,217,0.9);">Log In</a> <a class="btn btn-light action-button" role="button" href="signup.html" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a></p>
+<div class="row" style="position: sticky;top:0; z-index: 99999;">
+    <div class="col offset-xl-0">
+        <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button">
+            <div class="container">
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
+                        class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+                </button>
+                <div><img style="width: 5rem;height: 5rem;" src="assets/img/Logo.png"></div>
+                <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
+                    <ul class="navbar-nav nav-right">
+                        <li class="nav-item"><a class="nav-link active" href="index.html"
+                                                style="color: rgba(224,217,217,0.9);">Tus Ofertas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html"
+                                                style="color: rgba(224,217,217,0.9);">Candidaturas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="faq.html" style="color: rgba(224,217,217,0.9);">Noticias</a>
+                        </li>
+                    </ul>
+                    <p class="ms-auto navbar-text actions"><a class="login" href="login.html"
+                                                              style="color: rgba(224,217,217,0.9);">Log In</a> <a
+                            class="btn btn-light action-button" role="button" href="signup.html"
+                            style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign
+                        Up</a></p>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<section style="margin-top: 1rem;margin-bottom: 1rem;">
+    <h1 class="text-center text-capitalize" style="color: rgb(255,255,255);margin-top: 1rem;">Crear tu empresa</h1>
+    <div class="container" style="background-color:#232325; border-radius: 30px; padding-top:10px; padding-bottom:10px;">
+        <form id="application-form">
+            <div class="form-group mb-3">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 col-xl-4 col-xxl-4 offset-lg-2 offset-xl-2 offset-xxl-2">
+                        <p style="color: #ffffff;">
+                            <strong>Nombre de la empresa</strong>
+                            <input class="form-control" type="text" required=""  name="" placeholder="" style="color: #ffffff;background: #6e6e6e;">
+                        </p>
+                        <p style="color: #ffffff;">
+                            <strong>Número de empleados</strong>
+                            <input class="form-control" type="text" required="" name="" placeholder="" style="color: #ffffff;background: #6e6e6e;">
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-xl-4 col-xxl-4 col-md-6 d-flex justify-content-center">
+                        <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <div class="w-100">
+                                <p style="color: #ffffff; font-weight: bold;">Logo de la empresa</p>
+                                <form style="display: flex; flex-direction: column; align-items: center;">
+                                    <div style="width: 100px; height: 100px; background-image: url('https://via.placeholder.com/100x100'); background-size: cover; position: relative; margin-bottom: 20px;">
+                                        <img id="preview" src="" style="max-width: 100px; max-height: 100px; position: absolute; top: 0; left: 0;">
+                                    </div>
+                                    <input type="file" id="archivo" name="archivo" accept=".png, .jpg, .jpeg" style="color:white" onchange="previsualizarImagen()" style="margin-bottom: 20px;">
+                                </form>
+                            </div>
+                        </div>
+
+                        <script>
+                            function previsualizarImagen() {
+                                var archivo = document.getElementById("archivo").files[0];
+                                var reader = new FileReader();
+                                reader.onloadend = function () {
+                                    document.getElementById("preview").src = reader.result;
+                                }
+                                if (archivo) {
+                                    reader.readAsDataURL(archivo);
+                                } else {
+                                    document.getElementById("preview").src = "";
+                                }
+                            }
+                        </script>
                     </div>
                 </div>
-            </nav>
+            </div>
+            <div class="form-group mb-3" style="color: #ffffff;">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4 offset-lg-2 offset-xl-2 offset-xxl-2">
+                        <p style="color: #ffffff;">
+                            <strong>Categoría</strong>&nbsp;
+                        </p>
+                        <select class="form-select pb-2" required="" style="font-size: 0.9rem;background: #6e6e6e;color: #ffffff;">
+                            <option value="1" selected="">Consultoría</option>
+                            <option value="2">Desarrolladora</option>
+                            <option value="3">Tecnológica</option>
+                            <option value="4">Servicios TI</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4" style="color: #ffffff;">
+                        <p style="color: #ffffff;">
+                            <strong>Localidad</strong>
+                        </p>
+                        <select class="form-select pb-2" required="" style="font-size: 0.9rem;background: rgb(110,110,110);color: #ffffff;">
+                            <option value="1">L'Hospitalet de Llobregat</option>
+                            <option value="2">Barcelona</option>
+                            <option value="3">Girona</option>
+                            <option value="4">Madrid</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-lg-8 col-xl-8 col-xxl-8 offset-lg-2 offset-xl-2 offset-xxl-2" style="color: #ffffff; margin-bottom:10px">
+                        <p style="color: #ffffff;">
+                            <strong>Descripción de la empresa</strong>&nbsp
+                        </p>
+                        <textarea class="form-control" style="background: #6e6e6e;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-3" style="color: #ffffff;">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2 offset-xl-2 offset-xxl-2">
+                        <p style="color: #ffffff;">
+                            <strong>Página web</strong>
+                        </p>
+                        <input class="form-control" type="text" required="" name="" placeholder="" style="color: #ffffff;background: rgb(110,110,110);" />
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="justify-content-center d-flex form-group mb-3">
+            <div id="submit-btn">
+                <div class="row">
+                    <button class="btn m-0 rounded-pill px-4" type="button" style="min-width: 500px; color: #ffffff; bottom:1px; background-color: #007AFF" action method="POST" target="hidden_iframe">
+                        Crear
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-    <section style="margin-top: 1rem;margin-bottom: 1rem;">
-        <h1 class="text-center text-capitalize" style="color: rgb(255,255,255);margin-top: 1rem;">Crear tu empresa</h1>
-        <div class="container" style="background-color:#232325; border-radius: 30px; padding-top:10px; padding-bottom:10px;">
-            <form id="application-form">
-                <div class="form-group mb-3">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-4 col-xl-4 col-xxl-4 offset-lg-2 offset-xl-2 offset-xxl-2">
-                            <p style="color: #ffffff;"><strong>Nombre de la empresa</strong><input class="form-control" type="text" required="" name="" placeholder="" style="color: #ffffff;background: #6e6e6e;"></p>
-                            <p style="color: #ffffff;"><strong>Número de empleados</strong><input class="form-control" type="text" required="" name="" placeholder="" style="color: #ffffff;background: #6e6e6e;"></p>
-                        </div>
-                        <div class="col-lg-4 col-xl-4 col-xxl-4 col-md-6 d-flex justify-content-center"><div class="col-md-6 d-flex justify-content-center align-items-center">
-  <div class="w-100">
-    <p style="color: #ffffff; font-weight: bold;">Logo de la empresa</p>
-    <form style="display: flex; flex-direction: column; align-items: center;">
-      <div style="width: 100px; height: 100px; background-image: url('https://via.placeholder.com/100x100'); background-size: cover; position: relative; margin-bottom: 20px;">
-        <img id="preview" src="" style="max-width: 100px; max-height: 100px; position: absolute; top: 0; left: 0;">
-      </div>
-      <input type="file" id="archivo" name="archivo" accept=".png, .jpg, .jpeg" style="color:white" onchange="previsualizarImagen()" style="margin-bottom: 20px;">
-    </form>
-  </div>
-</div>
-
-<script>
-  function previsualizarImagen() {
-    var archivo = document.getElementById("archivo").files[0];
-    var reader = new FileReader();
-    reader.onloadend = function() {
-      document.getElementById("preview").src = reader.result;
-    }
-    if (archivo) {
-      reader.readAsDataURL(archivo);
-    } else {
-      document.getElementById("preview").src = "";
-    }
-  }
-</script></div>
-                    </div>
-                </div>
-                <div class="form-group mb-3" style="color: #ffffff;">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4 offset-lg-2 offset-xl-2 offset-xxl-2">
-                            <p style="color: #ffffff;"><strong>Categoría</strong>&nbsp;</p><select class="form-select pb-2" required="" style="font-size: 0.9rem;background: #6e6e6e;color: #ffffff;">
-                                <option value="1" selected="">Consultoría</option>
-                                <option value="2">Desarrolladora</option>
-                                <option value="3">Tecnológica</option>
-                                <option value="4">Servicios TI</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4" style="color: #ffffff;">
-                            <p style="color: #ffffff;"><strong>Localidad</strong></p><select class="form-select pb-2" required="" style="font-size: 0.9rem;background: rgb(110,110,110);color: #ffffff;">
-                                <option value="1">L'Hospitalet de Llobregat</option>
-                                <option value="2">Barcelona</option>
-                                <option value="3">Girona</option>
-                                <option value="4">Madrid</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="row">
-                        <div class="col-lg-8 col-xl-8 col-xxl-8 offset-lg-2 offset-xl-2 offset-xxl-2" style="color: #ffffff; margin-bottom:10px">
-                            <p style="color: #ffffff;"><strong>Descripción de la empresa</strong>&nbsp;</p><textarea class="form-control" style="background: #6e6e6e;"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group mb-3" style="color: #ffffff;">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 offset-lg-2 offset-xl-2 offset-xxl-2">
-                            <p style="color: #ffffff;"><strong>Página web</strong></p><input class="form-control" type="text" required="" name="" placeholder="" style="color: #ffffff;background: rgb(110,110,110);">
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="justify-content-center d-flex form-group mb-3">
-                <div id="submit-btn">
-                    <div class="row"><button class="btn m-0 rounded-pill px-4" type="button" style="min-width: 500px; color: #ffffff; bottom:1; background-color: #007AFF" action method="POST" target="hidden_iframe">Crear</button></div>
-                </div>
+</section>
+<footer id="myFooter" style="width: 100%;padding-top: 10px;height: 60px;font-size: 1rem; position:fixed; bottom:0;">
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-12 col-sm-6 col-md-3" style="height: 50px;"><img src="assets/img/Logo.png"
+                                                                             style="width: 2rem;height: 2rem;margin-bottom: 0p;">
             </div>
-        </div>
-    </section>
-    <footer id="myFooter" style="width: 100%;padding-top: 10px;height: 60px;font-size: 1rem; position:fixed; bottom:0;">
-        <div class="container-fluid">
-            <div class="row text-center">
-                <div class="col-12 col-sm-6 col-md-3" style="height: 50px;"><img src="assets/img/Logo.png" style="width: 2rem;height: 2rem;margin-bottom: 0p;"></div>
-                <div class="col-12 col-sm-6 col-md-2" style="height: 50px;"><a href="#">Política de privacidad</a></div>
-                <div class="col-12 col-sm-6 col-md-2" style="height: 50px;"><a href="https://www.google.com/maps/place/41%C2%B021'48.3%22N+2%C2%B006'06.4%22E/@41.3634033,2.1017793,17z/data=!3m1!4b1!4m4!3m3!8m2!3d41.3634033!4d2.1017793">¿Dónde estamos?</a></div>
-                <div class="col-sm-6 col-md-2" style="height: 50px;"><a href="mailto: tccproject23@gmail.com" style="vertical-align: middle;">tccproject23@gmail.com</a></div>
-                <div class="col" style="height: 50px;"><a href="#">Contacta con nosotros</a></div>
+            <div class="col-12 col-sm-6 col-md-2" style="height: 50px;"><a href="#">Política de privacidad</a></div>
+            <div class="col-12 col-sm-6 col-md-2" style="height: 50px;"><a
+                    href="https://www.google.com/maps/place/41%C2%B021'48.3%22N+2%C2%B006'06.4%22E/@41.3634033,2.1017793,17z/data=!3m1!4b1!4m4!3m3!8m2!3d41.3634033!4d2.1017793">¿Dónde
+                estamos?</a></div>
+            <div class="col-sm-6 col-md-2" style="height: 50px;"><a href="mailto: tccproject23@gmail.com"
+                                                                    style="vertical-align: middle;">tccproject23@gmail.com</a>
             </div>
+            <div class="col" style="height: 50px;"><a href="#">Contacta con nosotros</a></div>
         </div>
-    </footer>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    </div>
+</footer>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

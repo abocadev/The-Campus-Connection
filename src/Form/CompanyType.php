@@ -29,20 +29,62 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $array = $this->em->getRepository(\App\Entity\CompanyType::class)->findAll();
-        $options = [
-            'choices' => $array,
-            'choice_label' => 'name'
-        ];
         $builder
-            ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('url_image', FileType::class, [
-                'data_class' => null
+            ->add('name', TextType::class, [
+                'required' => 'true',
+
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-top: 10px; color: #ffffff; background-color: #6e6e6e',
+                    'placeholder'=> 'Nombre de la empresa',
+                ]
             ])
-            ->add('location')
-            ->add('url_web')
-            ->add('CompanyTypeID', ChoiceType::class, $options)
-            ->add('submit', SubmitType::class)
+            ->add('description', TextareaType::class, [
+                'required' => 'true',
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-top: 10px; background: #6e6e6e; color: white; min-height: 200px'
+                ]
+            ])
+            ->add('url_image', FileType::class, [
+                'required' => 'true',
+                'data_class' => null,
+                'attr' => [
+                    'accept' => '.png, .jpg, .jpeg',
+                    'class' => 'form-control',
+                    'style' => 'margin-top: 10px; color: white; background-color: #6e6e6e',
+                ]
+            ])
+            ->add('location', TextType::class, [
+                'required' => 'true',
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-top: 10px; color: white; background-color: #6e6e6e'
+                ]
+            ])
+            ->add('url_web', TextType::class, [
+                'required' => 'true',
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-top: 10px; color: #ffffff; background: #6e6e6e'
+                ]
+            ])
+            ->add('CompanyTypeID', ChoiceType::class, [
+                'required' => 'true',
+                'choices' => $array,
+                'choice_label' => 'name',
+                'attr' => [
+                    'class' => 'form-control',
+                    'style' => 'margin-top: 10px; color: #ffffff; background: #6e6e6e'
+                ]
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Crear',
+                'attr' => [
+                    'class' => 'btn m-0 rounded-pill px-4',
+                    'style' => 'min-width: 250px; color: #ffffff; background-color: #007AFF'
+                ]
+            ])
         ;
     }
 

@@ -1,10 +1,88 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OffersController!{% endblock %}
+{% block title %}Ofertas{% endblock %}
 
 {% block body %}
-    {% for offer in offers %}
-        <a href="{{ path('app_individual_offer', {'id': offer.id}) }}">Ir a la oferta</a>
-        {{ dump(offer) }}
-    {% endfor %}
+    <h1 class="text-center" style="color: white;">Ofertas</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 mt-3" style="margin-right: 100px;">
+                <div class="card">
+                    <div class="card-body" style="position: sticky; background-color: #1F1F20; padding: 10px;">
+                        <h5 class="card-title text-white">Filtros</h5>
+                        {{ form_start(form) }}
+                            <div class="form-group">
+                                <label for="palabra-clave" class="text-white">Palabra Clave:</label>
+                                {{ form_widget(form.title) }}
+                            </div>
+                            <div class="form-group mt-4">
+                                <label class="text-white" for="localidad">Localidad:</label>
+                                {{ form_widget(form.Locality) }}
+                            </div>
+                            <div class="form-group mt-4">
+                                <label class="text-white" for="modalidad">Modalidad:</label>
+                                <br />
+                                <div style="color: white">
+                                    {% for choice  in form.Modality %}
+                                        {{ form_widget(choice) }} {{ form_label(choice) }} <br />
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="horas-semanales" class="text-white">Tipo de empresa:</label>
+                                {{ form_widget(form.Category) }}
+                            </div>
+                            <div class="form-group mt-4">
+                                <label for="tipo-empresa" class="text-white">Horas semanales:</label>
+                                {{ form_widget(form.WeeklyHours) }}
+                            </div>
+                            <div class="mt-4" style="display: flex; justify-content: center; align-items: center;">
+                                {{ form_widget(form.submit) }}
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="row justify-content-center">
+                    {% if offers != null %}
+                        {% for offer in offers %}
+                            {% if (app.user and app.user.userTypeID.id) or (offer.activatedByAdmin and (app.user == null or app.user.userTypeID.id != 3)) %}
+                                <div class="card rounded mb-3 mt-3" style="background-color: #1F1F20;">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <div class="card-img border-info"
+                                                 style="background-image: url('{{ asset('files/company_img/' ~ offer.company.urlImage) }}'); background-size: contain;background-position: center; height: 100%;background-repeat: no-repeat; align-items: center;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h4 class="card-title">
+                                                    <a href="{{ path('app_individual_offer', {'id': offer.id}) }}" class="text-white text-decoration-none">{{ offer.title }}</a>
+                                                </h4>
+
+                                                {% if offer.activatedByAdmin and app.user and app.user.userTypeID.id == 3 %}
+                                                    <p class="text-success">La oferta esta activada</p>
+                                                {% elseif app.user and app.user.userTypeID.id == 3 %}
+                                                    <p class="text-danger">La oferta esta desactivada</p>
+                                                {% endif %}
+                                                <h6 class="card-subtitle mb-2 text-muted text-white-50">{{ offer.company.name }}</h6>
+                                                <p class="card-text text-white">{{ offer.description|slice(0, 250) }}...</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <h5 class="mt-3 text-white">No hay ofertas disponibles</h5>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{#    {% for offer in offers %}#}
+{#        <a href="{{ path('app_individual_offer', {'id': offer.id}) }}">Ir a la oferta</a>#}
+{#        {{ dump(offer) }}#}
+{#    {% endfor %}#}
 {% endblock %}

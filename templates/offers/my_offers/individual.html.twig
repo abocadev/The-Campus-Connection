@@ -3,9 +3,36 @@
 {% block title %}{{ offer.title }}!{% endblock %}
 
 {% block body %}
-   
-   {{ dump(offer) }}
-   <h1>Candidatos:</h1>
+   <h1 style="text-align: center; margin-top:10px" class="text-white">{{ offer.title }}</h1>
+   <div class="container" style="background-color: #232325; color: #fff; margin-top: 20px; margin-bottom:70px; max-width: 800px; padding: 30px; border-radius: 10px;">
+      <div class="row">
+         <div class="col-md-4 text-center">
+            <img src="{{ asset('files/company_img/' ~ offer.company.urlImage) }}" alt="Oferta de empleo" style="width: 15rem;">
+         </div>
+         <div class="col-md-8">
+            <div class="row">
+               <div class="col-md-12">
+                  <h3 class="text-white">{{ offer.company.name }}</h3>
+                  <p>Fecha de creación de la oferta: {{ offer.creationDate|date('Y-m-d') }}</p>
+                  <p>Fecha de modificación de la oferta: {{ offer.updatedDate|date('Y-m-d') }}</p>
+
+                  <h3>Información del empleo</h3>
+                  <p>{{ offer.weeklyHours.name }} horas semanales</p>
+                  <p>{{ offer.locality.name }}</p>
+                  <p>Modalidad de trabajo: {{ offer.modality.name }}</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row mt-3">
+         <div class="col-md-12">
+            <h4>Descripción de la oferta</h4>
+            {{ offer.description|nl2br }}
+         </div>
+      </div>
+   </div>
+
+   <h1 class="text-white">Candidatos:</h1>
       {% for x in candidates %}
          {% if x %}
             {{ dump(x.user.name) }}

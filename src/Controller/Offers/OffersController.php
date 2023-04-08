@@ -6,6 +6,7 @@ use App\Entity\Offers;
 use App\Entity\UserToOffer;
 use App\Entity\UserType;
 use App\Form\ApplyOfferType;
+use App\Form\SearchOfferType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,14 +25,51 @@ class OffersController extends AbstractController
 
 
     #[Route('/offers', name: 'app_offers')]
-    public function index(Security $security): Response
+    public function index(Security $security,  Request $request): Response
     {
 
         $offers = $this->em->getRepository(Offers::class)->findAll();
 
+        $form = $this->createForm(SearchOfferType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+
+            $query = $this->em->getRepository(Offers::class)->createQueryBuilder('o');
+
+
+            if(!empty($form->get('title')->getData())){
+                $query->andWhere('o.title LIKE :title')
+                    ->setParameter('title', '%'.$form->get('title')->getData().'%');
+            }
+
+            if(!empty($form->get('Locality')->getData())){
+                $query->andWhere('o.Locality = :locality')
+                    ->setParameter('locality', $form->get('Locality')->getData());
+            }
+
+            if(!empty($form->get('Modality')->getData())){
+                $query->andWhere('o.modality = :modality')
+                    ->setParameter('modality', $form->get('Modality')->getData());
+            }
+
+            if(!empty($form->get('Category')->getData())){
+                $query->andWhere('o.Category = :category')
+                    ->setParameter('category', $form->get('Category')->getData());
+            }
+
+            if(!empty($form->get('WeeklyHours')->getData())) {
+                $query->andWhere('o.weeklyHours = :weeklyHours')
+                    ->setParameter('weeklyHours', $form->get('WeeklyHours')->getData());
+            }
+
+            $offers = $query->getQuery()->getResult();
+        }
         return $this->render('offers/index.html.twig', [
             'controller_name' => 'OffersController',
-            'offers' => $offers
+            'offers' => $offers,
+            'form' => $form
         ]);
     }
 
@@ -80,5 +118,27 @@ class OffersController extends AbstractController
             'form' => $form->createView(),
             'apuntado' => $apuntado
         ]);
+    }
+
+    #[Route('/activate-offer/{id}', name: 'app_activate_offer', methods: 'post')]
+    public function activate($id, Security $security): Response
+    {
+        $user = $security->getUser();
+        if($user->getUserTypeID()->getId() != 3) return $this->redirectToRoute('app_my_offers');
+        $offer = $this->em->getRepository(Offers::class)->find($id);
+        $offer->setActivatedByAdmin(true);
+        $this->em->flush();
+        return $this->redirectToRoute('app_offers');
+    }
+
+    #[Route('/desactivate-offer/{id}', name: 'app_desactivate_offer', methods: 'post')]
+    public function desactivate($id, Security $security): Response
+    {
+        $user = $security->getUser();
+        if($user->getUserTypeID()->getId() != 3) return $this->redirectToRoute('app_my_offers');
+        $offer = $this->em->getRepository(Offers::class)->find($id);
+        $offer->setActivatedByAdmin(false);
+        $this->em->flush();
+        return $this->redirectToRoute('app_offers');
     }
 }

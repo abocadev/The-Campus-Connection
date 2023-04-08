@@ -50,7 +50,7 @@ class CreateOffersController extends AbstractController
             $this->em->persist($offer);
             $this->em->flush();
 
-            return $this->redirectToRoute('app_offers');
+            return $this->redirectToRoute('app_my_offers');
         }
 
         return $this->render('offers/create_offers/index.html.twig', [
