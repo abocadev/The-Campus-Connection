@@ -24,7 +24,7 @@ class NoticiesController extends AbstractController
             $date,
             "es",
             "popularity",
-            "40",
+            "25",
             "1"
         );
 
