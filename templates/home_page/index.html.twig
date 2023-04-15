@@ -15,7 +15,7 @@
             {% for article in articles %}
                 <div class="col-sm-6 col-md-4 item" style="padding-top:10px;padding-bottom:28px;">
                     <img class="img-fluid" style="height: 300px" src="{{ article.urlToImage }}">
-                    <h4 class="text-start" style="color:#fcbf49;padding-top:24px;">{{ article.title }}</h4>
+                    <h4 class="text-start" style="font-family:Raleway, sans-serif; color:#fcbf49;padding-top:24px;">{{ article.title }}</h4>
                     <p class="text-start" style="color:#ffffff;font-size:16px;font-family:Raleway, sans-serif;margin-top:0px;">{{ article.description|nl2br|slice(0, 200) }}...<br></p>
                     <div style="padding-top:28px; border-radius: 15px">
                         <a class="btn btn-primary" role="button" style="border-radius: 5px; font-family:Raleway, sans-serif;" href="{{ article.url }}">Visita la noticia</a>
@@ -24,30 +24,31 @@
             {% endfor %}
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <div class="row padMar colorCajasGrises">
-                <div class="col-10 col-md-9 col-lg-8 mx-auto d-block margenesTxts">
-                    <h3 class="padMar text-center text-white" style="margin: 35px 0;">Ofertas</h3>
+    {% if app.user == null or app.user.UserTypeID.id != 2%}
+        <div class="row">
+            <div class="col">
+                <div class="row padMar colorCajasGrises">
+                    <div class="col-10 col-md-9 col-lg-8 mx-auto d-block margenesTxts">
+                        <h3 class="padMar text-center text-white" style="margin: 35px 0;">Ofertas</h3>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="article-list" style="padding-left:10px;padding-right:10px;background-color:#000000;padding-top:10px;">
-        <div class="row articles" style="padding-right:16px;padding-left:16px;">
-
-            {% for offer in offers %}
-                <div class="col-sm-6 col-md-4 item" style="padding-top:10px;padding-bottom:28px;">
-                    <img class="img-fluid" src="{{ asset('files/company_img/' ~ offer.company.urlImage)}}" style="border-radius: 10px; height: 300px">
-                    <h4 class="text-start" style="color:#fcbf49;font-family:Raleway;padding-top:24px;">{{ offer.title }}</h4>
-                    <p class="text-start description" style="color:#ffffff;font-size:16px;font-family:Raleway, sans-serif;margin-top:0px;"> {{ offer.description|nl2br|slice(0, 200) }}...</p>
-                    <div style="padding-top:28px;"><a class="btn btn-primary" role="button" style="font-family:Raleway, sans-serif;" href="{{path('app_individual_offer', {'id': offer.id})}}">Visitar la oferta</a></div>
-                </div>
-            {% endfor %}
-
+        <div class="article-list" style="padding-left:10px;background-color: #000000; padding-right:10px;padding-top:10px;">
+            <div class="row" style="padding-right:16px;padding-left:16px;">
+                {% for offer in offers %}
+                    <div class="col-sm-6 col-md-4 item" style="padding-top:10px;padding-bottom:28px;">
+                        <img class="img-fluid" style="height: 300px" src="{{ asset('files/company_img/' ~ offer.company.urlImage)}}">
+                        <h4 class=" padMar text-start" style="font-family:Raleway, sans-serif;color:#fcbf49;padding-top:24px;">{{ offer.title }}</h4>
+                        <p class="text-start" style="color:#ffffff;font-size:16px;font-family:Raleway, sans-serif;margin-top:0px;">{{ offer.description|nl2br|slice(0, 200) }}...<br></p>
+                        <div style="padding-top:28px; border-radius: 15px">
+                            <a class="btn btn-primary" role="button" style="border-radius: 5px; font-family:Raleway, sans-serif;" href="{{path('app_individual_offer', {'id': offer.id})}}">Visitar la oferta</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-
+    {% endif %}
 {% endblock %}
 
 

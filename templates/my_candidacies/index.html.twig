@@ -3,5 +3,42 @@
 {% block title %}Mis candidaturas!{% endblock %}
 
 {% block body %}
-{{ dump(candidances) }}
+    {% if app.user and app.user.UserTypeID.id != 1 %}
+        <meta http-equiv="refresh" content="0; URL='{{ path('app_permission_denied') }}'"/>
+    {% endif %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                {% if candidances %}
+                    {% for candidance in candidances %}
+                        <div class="card rounded mb-3 mt-3" style="background-color: #1F1F20">
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <div class="card-img border-info"
+                                         style="background-image: url('{{ asset('files/company_img/' ~ candidance.offer.company.urlImage) }}'); background-size: 70%;background-position: center; height: 100%;background-repeat: no-repeat; align-items: center;">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="{{ path('app_individual_offer', {'id': candidance.offer.id}) }}"
+                                               class="text-white text-decoration-none">{{ candidance.offer.title }}</a>
+                                        </h4>
+                                        <p class="text-white-50">Te has apuntado
+                                            el: {{ candidance.date|date('d-m-Y') }}</p>
+                                        <h6 class="card-subtitle mb-2 text-muted text-white-50">{{ candidance.offer.company.name }}</h6>
+                                        <p class="card-text text-white">{{ candidance.offer.description|slice(0, 250) }}
+                                            ...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h1 class="text-white text-center">No te has postulado a ninguna oferta</h1>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
 {% endblock %}

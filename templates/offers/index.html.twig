@@ -47,7 +47,7 @@
                 <div class="row justify-content-center">
                     {% if offers != null %}
                         {% for offer in offers %}
-                            {% if (app.user and app.user.userTypeID.id) or (offer.activatedByAdmin and (app.user == null or app.user.userTypeID.id != 3)) %}
+                            {% if (app.user and app.user.userTypeID.id == 3) or (offer.activatedByAdmin and (app.user == null or app.user.userTypeID.id != 3)) %}
                                 <div class="card rounded mb-3 mt-3" style="background-color: #1F1F20;">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
@@ -80,8 +80,4 @@
             </div>
         </div>
     </div>
-{#    {% for offer in offers %}#}
-{#        <a href="{{ path('app_individual_offer', {'id': offer.id}) }}">Ir a la oferta</a>#}
-{#        {{ dump(offer) }}#}
-{#    {% endfor %}#}
 {% endblock %}

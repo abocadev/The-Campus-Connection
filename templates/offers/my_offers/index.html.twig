@@ -4,13 +4,14 @@
 
 {% block body %}
     <div class="container-fluid" style="background: #2c2c2c;margin-top: 2rem;border-width: 1px;border-color: rgb(0,0,0);">
-        <div clz`ss="card" id="TableSorterCard">
+        <div class="card" id="TableSorterCard">
             <div class="card-header py-3" style="background: #4e4e4e;">
                 <div class="row table-topper align-items-center">
                     <div class="col-12 col-sm-5 col-md-6 text-start" style="margin: 0px;padding: 5px 15px;color: rgb(33, 37, 41);">
-                        <p class="text-primary m-0 fw-bold" style="color: rgb(255,255,255)!important;">Tus Ofertas</p>
+                        <p class="text-primary m-0 fw-bold" style="color: rgb(255,255,255)!important;">
+                            Tus Ofertas
+                        </p>
                     </div>
-                    <div class="col-12 col-sm-7 col-md-6 text-end" style="margin: 0px;padding: 5px 15px;"><button class="btn btn-primary btn-sm reset" type="button" style="margin: 2px;">Borrar Filtros</button></div>
                 </div>
             </div>
             <div class="row">
@@ -79,17 +80,5 @@
             </a>
         </div>
     </div>
-
-    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/del_row.js') }}"></script>
-    <script src="{{ asset('js/Dynamic-Table.js') }}"></script>
-    <script src="{{ asset('js/Dynamically-Add-Remove-Table-Row.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="{{ asset('js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20-1.js') }}"></script>
-    <script src="{{ asset('js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.js') }}"></script>
 
 {% endblock %}

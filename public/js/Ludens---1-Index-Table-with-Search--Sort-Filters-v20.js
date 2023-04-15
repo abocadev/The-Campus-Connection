@@ -186,21 +186,20 @@ $(function() {
 		// using "table.hasFilters" here to make sure we aren't targeting a sticky header
 		$.tablesorter.setFilters( $('#table'), filters, true ); // new v2.9
 
-		/** old method (prior to tablsorter v2.9 ***
+		/** old method (prior to tablsorter v2.9 ***/
 		var filters = $('table.tablesorter').find('input.tablesorter-filter');
 		filters.val(''); // clear all filters
 		filters.eq(col).val(txt).trigger('search', false);
-		******/
 
 		/*** second method ***
 			this method bypasses the filter inputs, so the "filter_columnFilters"
 			option can be set to false (no column filters showing)
 		******/
-		/*
+
 		var columns = [];
 		columns[5] = '2?%'; // or define the array this way [ '', '', '', '', '', '2?%' ]
 		$('table').trigger('search', [ columns ]);
-		*/
+
 
 		return false;
 	});

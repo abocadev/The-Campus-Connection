@@ -6,15 +6,19 @@
     <div class="row">
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                {% if app.user.imgUrl %}
                 <img class="rounded-circle mt-5" width="150px" height="auto" src="{{ asset('files/users_img/' ~ app.user.imgUrl)   }}" style="border: 2px solid white;" />
+                {% endif %}
                 <span style="color: white" class="font-weight-bold"> {{ app.user.name }} {{ app.user.surname }}</span>
                 <span style="color: white"> {{ app.user.email }} </span>
+                {% if app.user.cvname %}
                 <a class="mt-2" download="{{ app.user.name }}-{{ app.user.surname }}-CV" href="{{ asset('files/cv/') ~ app.user.cvname }}" >
                     <button class="btn btn-primary" style="border-radius: 10px">
                         <i class="fas fa-download"></i>
                         Descargar el CV
                     </button>
                 </a>
+                {% endif %}
             </div>
         </div>
             <div class="col-md-7 border-right">
@@ -49,12 +53,21 @@
                     <div class="col-md-12 mb-4 text-center text-white ">
                         {{ form_widget(form.img_url) }}
                     </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="text-right text-white text-white" style="text-align:center">Cambiar Currículum</h4>
-                    </div>
-                    <div class="col-md-12 mb-4 text-center text-white ">
-                        {{ form_widget(form.cvname) }}
-                    </div>
+                    {% if app.user.UserTypeID.id == 1 %}
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="text-right text-white text-white" style="text-align:center">Cambiar Currículum</h4>
+                        </div>
+                        <div class="col-md-12 mb-4 text-center text-white ">
+                            {{ form_widget(form.cvname) }}
+                        </div>
+                    {% else %}
+                        <div class="d-none d-flex justify-content-between align-items-center">
+                            <h4 class="text-right text-white text-white" style="text-align:center">Cambiar Currículum</h4>
+                        </div>
+                        <div class="d-none col-md-12 mb-4 text-center text-white ">
+                            {{ form_widget(form.cvname) }}
+                        </div>
+                    {% endif %}
                     <div class="mt-5 text-center">
                         {{ form_widget(form.submit) }}
                     </div>
