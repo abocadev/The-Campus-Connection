@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Entity\UserType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -31,6 +32,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getTypesUsers(UserType $userTypeID)
+    {
+        return $this->getEntityManager()->createQuery(
+            'SELECT o FROM App\Entity\User o WHERE o.UserTypeID=:userTypeID'
+        )->setParameter('userTypeID', $userTypeID)->getResult();
+
     }
 
     public function remove(User $entity, bool $flush = false): void
