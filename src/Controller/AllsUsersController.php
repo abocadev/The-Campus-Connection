@@ -28,7 +28,7 @@ class AllsUsersController extends AbstractController
     }
 
 
-    #[Route('/alls-users', name: 'app_alls_users')]
+    #[Route('/alls-users', name: 'alls_users')]
     public function index(): Response
     {
         $alumnType = $this->em->getRepository(UserType::class)->find(1);
@@ -53,7 +53,7 @@ class AllsUsersController extends AbstractController
         $user = $this->em->getRepository(User::class)->find($id);
         $user->setActivate(false);
         $this->em->flush();
-        return $this->redirectToRoute('app_alls_users');
+        return $this->redirectToRoute('alls_users');
     }
 
     #[Route('/alls-users/activate/{id}', name: 'activate_user', methods: 'post')]
@@ -62,7 +62,7 @@ class AllsUsersController extends AbstractController
         $user = $this->em->getRepository(User::class)->find($id);
         $user->setActivate(true);
         $this->em->flush();
-        return $this->redirectToRoute('app_alls_users');
+        return $this->redirectToRoute('alls_users');
     }
 
     #[Route('/alls-users/reboot-connecoins/{id}', name: 'reboot_connecoins', methods: 'post')]
@@ -73,7 +73,7 @@ class AllsUsersController extends AbstractController
             $user->setConnecoins(4);
             $this->em->flush();
         }
-        return $this->redirectToRoute('app_alls_users');
+        return $this->redirectToRoute('alls_users');
     }
 
     #[Route('/alls-users/change-password/{id}', name: 'change_password', methods: 'post')]
@@ -87,6 +87,6 @@ class AllsUsersController extends AbstractController
         );
         $user->setPassword($encryptedPassword);
         $this->em->flush();
-        return $this->redirectToRoute('app_alls_users');
+        return $this->redirectToRoute('alls_users');
     }
 }
