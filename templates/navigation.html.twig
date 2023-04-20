@@ -62,14 +62,16 @@
                                 <a class="nav-link" href="{{ path('app_noticies')}}" style="color: rgba(224,217,217,0.9);">Noticias</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('alls_users')}}" style="color: rgba(224,217,217,0.9);">Todos los usuarios</a>
+                                <a class="nav-link" href="{{ path('app_alls_users')}}" style="color: rgba(224,217,217,0.9);">Todos los usuarios</a>
                             </li>
                         {% endif %}
                     </ul>
                     <p class="ms-auto navbar-text actions">
                         {% if app.user %}
                             {% if app.user.UserTypeID.id == 1 %}
-                                <span class="text-white"> {{ app.user.connecoins }}<i class="fas ms-2 me-3 fa-graduation-cap"></i></span>
+                                <span class="text-white"> {{ app.user.connecoins }}
+                                    <i class="fas ms-2 me-3 fa-graduation-cap"></i>
+                                </span>
                             {% endif %}
                             <a class="btn btn-light action-button" role="button" href="{{ path('app_my_perfil') }}" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Mi perfil</a>
                             <a class="login" href="{{ path('app_logout', {'activate': 'false'}) }}" style="color: red;">Log out</a>

@@ -18,13 +18,9 @@
                     </div>
                 </div>
             </div>
-            <div class="justify-content-center d-flex form-group mb-3">
-                <div id="submit-btn">
-                    <div class="row">
+            <div class="d-flex justify-content-center align-content-center form-group mb-3">
                         {{ form_widget(form.submit) }}
-                    </div>
-                </div>
-                <a href="{{ path('app__create_company') }}">Crear una empresa</a>
+                <a class="ms-3" href="{{ path('app__create_company') }}">Crear una empresa</a>
             </div>
             {{ form_end(form) }}
 
