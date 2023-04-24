@@ -53,7 +53,7 @@ class HomePageController extends AbstractController
         for ($i = 0; $i < $sizeOffers; $i++){
             if($sizeOffers - $i >= 0){
                 $offer = $this->em->getRepository(Offers::class)->find($sizeOffers - $i);
-                $offers[] = $offer;
+                if($offer->isActivatedByAdmin()) $offers[] = $offer;
 
             }
         }

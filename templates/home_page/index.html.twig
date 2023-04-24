@@ -24,7 +24,7 @@
             {% endfor %}
         </div>
     </div>
-    {% if app.user == null or app.user.UserTypeID.id != 2%}
+    {% if (app.user == null or app.user.UserTypeID.id != 2) and offers != null%}
         <div class="row">
             <div class="col">
                 <div class="row padMar colorCajasGrises">
