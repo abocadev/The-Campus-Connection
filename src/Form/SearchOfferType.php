@@ -73,7 +73,7 @@ class SearchOfferType extends AbstractType
                 'attr' => [
                     'class' => 'form-select',
                 ],
-                'placeholder' => '-- Selecciona una modalidad --'
+                'placeholder' => '-- Selecciona una categoria  --'
             ])
             ->add('WeeklyHours', ChoiceType::class, [
                 'required' => false,

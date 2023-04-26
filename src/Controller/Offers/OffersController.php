@@ -34,11 +34,7 @@ class OffersController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData();
-
             $query = $this->em->getRepository(Offers::class)->createQueryBuilder('o');
-
-
             if(!empty($form->get('title')->getData())){
                 $query->andWhere('o.title LIKE :title')
                     ->setParameter('title', '%'.$form->get('title')->getData().'%');
@@ -50,17 +46,17 @@ class OffersController extends AbstractController
             }
 
             if(!empty($form->get('Modality')->getData())){
-                $query->andWhere('o.modality = :modality')
+                $query->andWhere('o.Modality = :modality')
                     ->setParameter('modality', $form->get('Modality')->getData());
             }
 
             if(!empty($form->get('Category')->getData())){
-                $query->andWhere('o.category = :category')
+                $query->andWhere('o.Category = :category')
                     ->setParameter('category', $form->get('Category')->getData());
             }
 
             if(!empty($form->get('WeeklyHours')->getData())) {
-                $query->andWhere('o.weeklyHours = :weeklyHours')
+                $query->andWhere('o.WeeklyHours = :weeklyHours')
                     ->setParameter('weeklyHours', $form->get('WeeklyHours')->getData());
             }
 
