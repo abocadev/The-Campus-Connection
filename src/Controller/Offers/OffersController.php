@@ -59,6 +59,7 @@ class OffersController extends AbstractController
                 $query->andWhere('o.WeeklyHours = :weeklyHours')
                     ->setParameter('weeklyHours', $form->get('WeeklyHours')->getData());
             }
+            $query->andWhere('o.ActivatedByAdmin = true');
 
             $offers = $query->getQuery()->getResult();
         }
