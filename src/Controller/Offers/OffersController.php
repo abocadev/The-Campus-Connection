@@ -55,7 +55,7 @@ class OffersController extends AbstractController
             }
 
             if(!empty($form->get('Category')->getData())){
-                $query->andWhere('o.Category = :category')
+                $query->andWhere('o.category = :category')
                     ->setParameter('category', $form->get('Category')->getData());
             }
 
