@@ -59,9 +59,12 @@ class OffersController extends AbstractController
                     ->setParameter('weeklyHours', $form->get('WeeklyHours')->getData());
             }
         }
-        $query->andWhere('o.ActivatedByAdmin = true');
+
+        $user = $security->getUser();
+        if(!$user || $user->getUserTypeID()->getId()) $query->andWhere('o.ActivatedByAdmin = true');
 
         $offers = $query->getQuery()->getResult();
+
         return $this->render('offers/index.html.twig', [
             'controller_name' => 'OffersController',
             'offers' => $offers,
