@@ -3,29 +3,18 @@
 {% block title %}Ofertas{% endblock %}
 
 {% block body %}
-    <h1 class="text-center" style="color: white;">Ofertas</h1>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 mt-3" style="margin-right: 100px;">
-                <div class="card">
-                    <div class="card-body" style="position: sticky; background-color: #1F1F20; padding: 10px;">
-                        <h5 class="card-title text-white">Filtros</h5>
-                        {{ form_start(form) }}
-                            <div class="form-group">
-                                <label for="palabra-clave" class="text-white">Palabra Clave:</label>
-                                {{ form_widget(form.title) }}
-                            </div>
-                            <div class="form-group mt-4">
-                                <label class="text-white" for="localidad">Localidad:</label>
-                                {{ form_widget(form.Locality) }}
-                            </div>
-                            <div class="form-group mt-4">
-                                <label class="text-white" for="modalidad">Modalidad:</label>
-                                <br />
-                                <div style="color: white">
-                                    {% for choice  in form.Modality %}
-                                        {{ form_widget(choice) }} {{ form_label(choice) }} <br />
-                                    {% endfor %}
+    <div class="mt-5 mb-5">
+        <h1 class="text-center" style="color: white;">Ofertas</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 mt-3" style="margin-right: 100px;">
+                    <div class="card">
+                        <div class="card-body" style="position: sticky; background-color: #1F1F20; padding: 10px;">
+                            <h5 class="card-title text-white">Filtros</h5>
+                            {{ form_start(form) }}
+                                <div class="form-group">
+                                    <label for="palabra-clave" class="text-white">Palabra Clave:</label>
+                                    {{ form_widget(form.title) }}
                                 </div>
                                 <div class="form-group mt-4">
                                     <label class="text-white" for="localidad">Localidad:</label>
