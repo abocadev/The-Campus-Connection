@@ -28,11 +28,8 @@ class ContactController extends AbstractController
                     '<br>nNumero de telefono: '.$form->get('phone')->getData().
                     '<br>Mensaje:'.$form->get('message')->getData());
            $mailer->send($email);
-           return new Response('Nombre de la persona: '.$form->get('name')->getData().
-               '<br>Correo de la persona: '.$form->get('email')->getData().
-               '<br>nNumero de telefono: '.$form->get('phone')->getData().
-               '<br>Mensaje:'.$form->get('message')->getData());
-//            return new Response('lo estas haciendo de puta madre');
+           $this->addFlash('contact', '¡Se ha enviado correctamente!');
+           return $this->redirectToRoute('app_contact');
         }
         return $this->render('contact/index.html.twig', [
             'form' => $form->createView()

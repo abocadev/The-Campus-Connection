@@ -3,7 +3,7 @@
 {% block title %}Hello ContactController!{% endblock %}
 
 {% block body %}
-    <div>
+    <div class="mt-5 mb-5">
         <div class="container-fluid text-white">
             <h1 style="text-align: center">Información de Contacto</h1>
             <hr>
@@ -151,5 +151,13 @@
                 </div>
             {{ form_end(form) }}
         </div>
+        {% for message in app.flashes('contact') %}
+            <div class="alert alert-dismissible alert-success text-center" style="margin: 5rem auto; width: 60%">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>{{ message }}</strong></a>
+            </div>
+            <meta http-equiv="refresh" content="3; URL='{{ path('homepage') }}'" />
+
+        {% endfor %}
     </div>
 {% endblock %}

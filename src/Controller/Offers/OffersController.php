@@ -28,13 +28,12 @@ class OffersController extends AbstractController
     public function index(Security $security,  Request $request): Response
     {
 
-        $offers = $this->em->getRepository(Offers::class)->findAll();
-
         $form = $this->createForm(SearchOfferType::class);
         $form->handleRequest($request);
 
+        $query = $this->em->getRepository(Offers::class)->createQueryBuilder('o');
+
         if($form->isSubmitted() && $form->isValid()){
-            $query = $this->em->getRepository(Offers::class)->createQueryBuilder('o');
             if(!empty($form->get('title')->getData())){
                 $query->andWhere('o.title LIKE :title')
                     ->setParameter('title', '%'.$form->get('title')->getData().'%');
@@ -59,10 +58,10 @@ class OffersController extends AbstractController
                 $query->andWhere('o.WeeklyHours = :weeklyHours')
                     ->setParameter('weeklyHours', $form->get('WeeklyHours')->getData());
             }
-            $query->andWhere('o.ActivatedByAdmin = true');
-
-            $offers = $query->getQuery()->getResult();
         }
+        $query->andWhere('o.ActivatedByAdmin = true');
+
+        $offers = $query->getQuery()->getResult();
         return $this->render('offers/index.html.twig', [
             'controller_name' => 'OffersController',
             'offers' => $offers,
