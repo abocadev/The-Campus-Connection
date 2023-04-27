@@ -61,7 +61,7 @@ class OffersController extends AbstractController
         }
 
         $user = $security->getUser();
-        if(!$user || $user->getUserTypeID()->getId()) $query->andWhere('o.ActivatedByAdmin = true');
+        if(!$user || $user->getUserTypeID()->getId() != 3) $query->andWhere('o.ActivatedByAdmin = true');
 
         $offers = $query->getQuery()->getResult();
 
