@@ -48,13 +48,14 @@ class HomePageController extends AbstractController
         $sizeOffers = $this->em->getRepository(Offers::class)->findAll();
         $sizeOffers = sizeof($sizeOffers);
         $offers = [];
-//        $imgs = [];
-
-        for ($i = 0; $i < $sizeOffers; $i++){
+        $count = 0;
+        for ($i = 0; $i < $sizeOffers && $count < 3; $i++){
             if($sizeOffers - $i >= 0){
-                $offer = $this->em->getRepository(Offers::class)->find($sizeOffers - $i);
-                if($offer->isActivatedByAdmin()) $offers[] = $offer;
-
+                $offer = $this->em->getRepository(Offers::class)->find($sizeOffers - ($i));
+                if($offer->isActivatedByAdmin()) {
+                    $offers[] = $offer;
+                    $count++;
+                }
             }
         }
 
