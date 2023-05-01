@@ -18,7 +18,7 @@
                     <h4 class="text-start" style="font-family:Raleway, sans-serif; color:#fcbf49;padding-top:24px;">{{ article.title }}</h4>
                     <p class="text-start" style="color:#ffffff;font-size:16px;font-family:Raleway, sans-serif;margin-top:0px;">{{ article.description|nl2br|slice(0, 200) }}...<br></p>
                     <div style="padding-top:28px; border-radius: 15px">
-                        <a class="btn btn-primary" role="button" style="border-radius: 5px; font-family:Raleway, sans-serif;" href="{{ article.url }}">Visita la noticia</a>
+                        <a class="btn btn-primary" role="button" target="_blank" style="border-radius: 5px; font-family:Raleway, sans-serif;" href="{{ article.url }}">Visita la noticia</a>
                     </div>
                 </div>
             {% endfor %}

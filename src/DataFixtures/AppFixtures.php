@@ -871,7 +871,7 @@ Y además, te incorporarías en una de las empresas mejor valoradas en Forbes 20
 ¡No lo dudes, ven a Deloitte Digital!");
         $offer->setPositions(4);
         $offer->setActivated(true);
-        $offer->setActivatedByAdmin(true);
+        $offer->setActivatedByAdmin(false);
         $offer->setCreationDate(new \DateTime());
         $offer->setUpdatedDate(new \DateTime());
         $offer->setCompany($company);
@@ -1115,7 +1115,7 @@ Si compartes nuestra pasión y eres una persona dinámica, creativa y con ganas 
         $category = $manager->getRepository(CategoriesOffers::class)->find(2);
         $hours = $manager->getRepository(WeeklyHoursOffers::class)->find(1);
         $offer = new Offers();
-        $offer->setTitle("Tecnico informatico");
+        $offer->setTitle("Técnico informatico");
         $offer->setDescription("Grupo Planeta, una de las mayores editoriales del mundo, busca un estudiante de informática apasionado por la tecnología para unirse a nuestro equipo de tecnología. Como Técnico Informático, tendrás la oportunidad de trabajar en una variedad de proyectos emocionantes en un entorno dinámico y creativo. Además, tendrás la oportunidad de trabajar con algunos de los mejores profesionales en el campo de la informática y la tecnología.
 
 Responsabilidades:
@@ -1187,7 +1187,7 @@ English / Spanish
 Based on Barcelona office.");
         $offer->setPositions(5);
         $offer->setActivated(true);
-        $offer->setActivatedByAdmin(true);
+        $offer->setActivatedByAdmin(false);
         $offer->setCreationDate(new \DateTime());
         $offer->setUpdatedDate(new \DateTime());
         $offer->setCompany($company);
