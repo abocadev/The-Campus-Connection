@@ -7,17 +7,19 @@
         <div class="col-md-3 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 {% if app.user.imgUrl %}
-                <img class="rounded-circle mt-5" width="150px" height="auto" src="{{ asset('files/users_img/' ~ app.user.imgUrl)   }}" style="border: 2px solid white;" />
+                    <img class="rounded-circle mt-5" width="150px" height="auto" src="{{ asset('files/users_img/' ~ app.user.imgUrl)   }}" style="border: 2px solid white;" />
+                {% else %}
+                    <img class="rounded-circle mt-5" width="150px" height="auto" src="{{ asset('files/users_img/user_img.jpg' )   }}" style="border: 2px solid white;" />
                 {% endif %}
                 <span style="color: white" class="font-weight-bold"> {{ app.user.name }} {{ app.user.surname }}</span>
                 <span style="color: white"> {{ app.user.email }} </span>
                 {% if app.user.cvname %}
-                <a class="mt-2" download="{{ app.user.name }}-{{ app.user.surname }}-CV" href="{{ asset('files/cv/') ~ app.user.cvname }}" >
-                    <button class="btn btn-primary" style="border-radius: 10px">
-                        <i class="fas fa-download"></i>
-                        Descargar el CV
-                    </button>
-                </a>
+                    <a class="mt-2" download="{{ app.user.name }}-{{ app.user.surname }}-CV" href="{{ asset('files/cv/') ~ app.user.cvname }}" >
+                        <button class="btn btn-primary" style="border-radius: 10px">
+                            <i class="fas fa-download"></i>
+                            Descargar el CV
+                        </button>
+                    </a>
                 {% endif %}
             </div>
         </div>

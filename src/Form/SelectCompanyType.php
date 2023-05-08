@@ -39,7 +39,7 @@ class SelectCompanyType extends AbstractType
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Crear',
+                'label' => 'Añadir',
                 'attr' => [
                     'class' => 'btn m-0 rounded-pill px-4',
                     'style' => 'min-width: 150px; color: #ffffff; background-color: #007AFF'
