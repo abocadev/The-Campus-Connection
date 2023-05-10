@@ -5,7 +5,7 @@ FROM php:7.4-apache
 COPY . ./
 
 # Set the working directory in the container
-WORKDIR ./
+WORKDIR /var/www/html
 
 # Install necessary PHP extensions
 RUN apt-get update && apt-get install -y \
