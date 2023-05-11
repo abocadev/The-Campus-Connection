@@ -1,10 +1,13 @@
-FROM php:7.4-fpm
+FROM php:8.1-fpm
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     zip \
     && docker-php-ext-install zip
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 
 # Install Composer
 COPY --from=composer /usr/bin/composer /usr/bin/composer
@@ -14,6 +17,8 @@ WORKDIR /var/www
 
 # Copy composer.json and composer.lock files
 COPY composer.json composer.lock ./
+
+ENV COMPOSER_ALLOW_SUPERUSER=0
 
 # Install app dependencies
 RUN composer install
